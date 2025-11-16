@@ -123,6 +123,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="GeneratorWartosci.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ModelARX.cpp" />
     <ClCompile Include="ProstyUAR.cpp" />
@@ -130,6 +131,7 @@
     <ClCompile Include="testy_uar.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="GeneratorWartosci.h" />
     <ClInclude Include="ModelARX.h" />
     <ClInclude Include="ProstyUAR.h" />
     <ClInclude Include="RegulatorPID.h" />

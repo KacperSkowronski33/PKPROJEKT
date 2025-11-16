@@ -422,7 +422,7 @@ void TESTY_RegulatorPID::test_PI_skokJednostkowy_3()
 }
 
 // testy dla pelnego UAR:
-/*
+
 namespace TESTY_ProstyUAR
 {
 	void wykonaj_testy();
@@ -584,14 +584,14 @@ void TESTY_ProstyUAR::test_UAR_3_skokJednostkowyPID()
 		std::cerr << "INTERUPTED! (niespodziwany wyjatek)\n";
 	}
 }
-*/
+
 
 int main()
 {
 	TESTY_ModelARX::wykonaj_testy();
 	TESTY_RegulatorPID::wykonaj_testy();
 	//TESTY_RegulatorOnOff::wykonaj_testy();
-	//TESTY_ProstyUAR::wykonaj_testy();
+	TESTY_ProstyUAR::wykonaj_testy();
 }
 
 #endif

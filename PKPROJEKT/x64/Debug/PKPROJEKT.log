@@ -1,4 +1,6 @@
-﻿  main.cpp
+﻿  GeneratorWartosci.cpp
+  main.cpp
+  ModelARX.cpp
   ProstyUAR.cpp
   testy_uar.cpp
   Generowanie kodu...

@@ -1,6 +1,5 @@
 #include <iostream>
-#include "ModelARX.h"
-#include "RegulatorPID.h"
+#include "GeneratorWartosci.h"
 
 #ifdef MAIN
 
