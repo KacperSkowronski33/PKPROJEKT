@@ -3,12 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\kskow\\Desktop\\pkprojekt\\PKPROJEKT\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{683158CB-C256-4222-AFA2-A6096D97257D}|PKPROJEKT.vcxproj|C:\\Users\\kskow\\Desktop\\pkprojekt\\PKPROJEKT\\ModelARX.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{683158CB-C256-4222-AFA2-A6096D97257D}|PKPROJEKT.vcxproj|solutionrelative:ModelARX.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{683158CB-C256-4222-AFA2-A6096D97257D}|PKPROJEKT.vcxproj|C:\\Users\\kskow\\Desktop\\pkprojekt\\PKPROJEKT\\testy_uar.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{683158CB-C256-4222-AFA2-A6096D97257D}|PKPROJEKT.vcxproj|solutionrelative:testy_uar.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{683158CB-C256-4222-AFA2-A6096D97257D}|PKPROJEKT.vcxproj|C:\\Users\\kskow\\Desktop\\pkprojekt\\PKPROJEKT\\ProstyUAR.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{683158CB-C256-4222-AFA2-A6096D97257D}|PKPROJEKT.vcxproj|solutionrelative:ProstyUAR.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{683158CB-C256-4222-AFA2-A6096D97257D}|PKPROJEKT.vcxproj|C:\\Users\\kskow\\Desktop\\pkprojekt\\PKPROJEKT\\RegulatorPID.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{683158CB-C256-4222-AFA2-A6096D97257D}|PKPROJEKT.vcxproj|solutionrelative:RegulatorPID.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{683158CB-C256-4222-AFA2-A6096D97257D}|PKPROJEKT.vcxproj|C:\\Users\\kskow\\Desktop\\pkprojekt\\PKPROJEKT\\ModelARX.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{683158CB-C256-4222-AFA2-A6096D97257D}|PKPROJEKT.vcxproj|solutionrelative:ModelARX.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{683158CB-C256-4222-AFA2-A6096D97257D}|PKPROJEKT.vcxproj|C:\\Users\\kskow\\Desktop\\pkprojekt\\PKPROJEKT\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{683158CB-C256-4222-AFA2-A6096D97257D}|PKPROJEKT.vcxproj|solutionrelative:main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{683158CB-C256-4222-AFA2-A6096D97257D}|PKPROJEKT.vcxproj|C:\\Users\\kskow\\Desktop\\pkprojekt\\PKPROJEKT\\RegulatorPID.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{683158CB-C256-4222-AFA2-A6096D97257D}|PKPROJEKT.vcxproj|solutionrelative:RegulatorPID.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{683158CB-C256-4222-AFA2-A6096D97257D}|PKPROJEKT.vcxproj|C:\\Users\\kskow\\Desktop\\pkprojekt\\PKPROJEKT\\ModelARX.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{683158CB-C256-4222-AFA2-A6096D97257D}|PKPROJEKT.vcxproj|solutionrelative:ModelARX.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,8 +38,34 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 6,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ProstyUAR.h",
+              "DocumentMoniker": "C:\\Users\\kskow\\Desktop\\pkprojekt\\PKPROJEKT\\ProstyUAR.h",
+              "RelativeDocumentMoniker": "ProstyUAR.h",
+              "ToolTip": "C:\\Users\\kskow\\Desktop\\pkprojekt\\PKPROJEKT\\ProstyUAR.h",
+              "RelativeToolTip": "ProstyUAR.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-11-16T15:09:26.221Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "RegulatorPID.cpp",
+              "DocumentMoniker": "C:\\Users\\kskow\\Desktop\\pkprojekt\\PKPROJEKT\\RegulatorPID.cpp",
+              "RelativeDocumentMoniker": "RegulatorPID.cpp",
+              "ToolTip": "C:\\Users\\kskow\\Desktop\\pkprojekt\\PKPROJEKT\\RegulatorPID.cpp",
+              "RelativeToolTip": "RegulatorPID.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-11-16T15:02:49.342Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
@@ -30,26 +76,65 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ModelARX.cpp",
+              "DocumentMoniker": "C:\\Users\\kskow\\Desktop\\pkprojekt\\PKPROJEKT\\ModelARX.cpp",
+              "RelativeDocumentMoniker": "ModelARX.cpp",
+              "ToolTip": "C:\\Users\\kskow\\Desktop\\pkprojekt\\PKPROJEKT\\ModelARX.cpp",
+              "RelativeToolTip": "ModelARX.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-11-16T15:03:44.401Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "RegulatorPID.h",
+              "DocumentMoniker": "C:\\Users\\kskow\\Desktop\\pkprojekt\\PKPROJEKT\\RegulatorPID.h",
+              "RelativeDocumentMoniker": "RegulatorPID.h",
+              "ToolTip": "C:\\Users\\kskow\\Desktop\\pkprojekt\\PKPROJEKT\\RegulatorPID.h",
+              "RelativeToolTip": "RegulatorPID.h",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAACsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-11-16T15:01:34.186Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "testy_uar.cpp",
+              "DocumentMoniker": "C:\\Users\\kskow\\Desktop\\pkprojekt\\PKPROJEKT\\testy_uar.cpp",
+              "RelativeDocumentMoniker": "testy_uar.cpp",
+              "ToolTip": "C:\\Users\\kskow\\Desktop\\pkprojekt\\PKPROJEKT\\testy_uar.cpp",
+              "RelativeToolTip": "testy_uar.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-11-16T14:58:18.717Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "ModelARX.h",
               "DocumentMoniker": "C:\\Users\\kskow\\Desktop\\pkprojekt\\PKPROJEKT\\ModelARX.h",
               "RelativeDocumentMoniker": "ModelARX.h",
               "ToolTip": "C:\\Users\\kskow\\Desktop\\pkprojekt\\PKPROJEKT\\ModelARX.h",
               "RelativeToolTip": "ModelARX.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACQAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-11-16T14:50:05.058Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "main.cpp",
               "DocumentMoniker": "C:\\Users\\kskow\\Desktop\\pkprojekt\\PKPROJEKT\\main.cpp",
               "RelativeDocumentMoniker": "main.cpp",
               "ToolTip": "C:\\Users\\kskow\\Desktop\\pkprojekt\\PKPROJEKT\\main.cpp",
               "RelativeToolTip": "main.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAiAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-11-16T14:38:03.025Z",
               "EditorCaption": ""

@@ -1,6 +1,13 @@
 #include <iostream>
+#include "ModelARX.h"
+#include "RegulatorPID.h"
+
+#ifdef MAIN
+
 
 int main()
 {
-	std::cout << "fsdsdfsdf" << std::endl;
+	//Twój program
 }
+
+#endif
