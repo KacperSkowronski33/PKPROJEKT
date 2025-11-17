@@ -2,6 +2,14 @@
   main.cpp
   ModelARX.cpp
   ProstyUAR.cpp
+  RegulatorPID.cpp
   testy_uar.cpp
+  WarstwaUslug.cpp
+C:\Users\igorj\source\repos\PKPROJEKT\testy_uar.cpp(609,15): warning C4566: znak przedstawiony przez nazwę zawierającą znaki uniwersalne "\u0141" nie może być przedstawiony w bieżącej stronie kodowej (1252)
   Generowanie kodu...
-  PKPROJEKT.vcxproj -> C:\Users\kskow\Desktop\pkprojekt\PKPROJEKT\x64\Debug\PKPROJEKT.exe
+testy_uar.obj : error LNK2019: nierozpoznany symbol zewnętrzny "void __cdecl TESTY_Wlasne::test_6_Uslugi_dynamicznaZmianaKp(void)" (?test_6_Uslugi_dynamicznaZmianaKp@TESTY_Wlasne@@YAXXZ) przywołany w funkcji "void __cdecl TESTY_Wlasne::wykonaj_testy(void)" (?wykonaj_testy@TESTY_Wlasne@@YAXXZ)
+testy_uar.obj : error LNK2019: nierozpoznany symbol zewnętrzny "void __cdecl TESTY_Wlasne::test_7_Uslugi_integracjaGeneratora(void)" (?test_7_Uslugi_integracjaGeneratora@TESTY_Wlasne@@YAXXZ) przywołany w funkcji "void __cdecl TESTY_Wlasne::wykonaj_testy(void)" (?wykonaj_testy@TESTY_Wlasne@@YAXXZ)
+testy_uar.obj : error LNK2019: nierozpoznany symbol zewnętrzny "void __cdecl TESTY_Wlasne::test_8_Uslugi_testPelnegoResetu(void)" (?test_8_Uslugi_testPelnegoResetu@TESTY_Wlasne@@YAXXZ) przywołany w funkcji "void __cdecl TESTY_Wlasne::wykonaj_testy(void)" (?wykonaj_testy@TESTY_Wlasne@@YAXXZ)
+testy_uar.obj : error LNK2019: nierozpoznany symbol zewnętrzny "void __cdecl TESTY_Wlasne::test_9_Uslugi_testSzumuWylaczonego(void)" (?test_9_Uslugi_testSzumuWylaczonego@TESTY_Wlasne@@YAXXZ) przywołany w funkcji "void __cdecl TESTY_Wlasne::wykonaj_testy(void)" (?wykonaj_testy@TESTY_Wlasne@@YAXXZ)
+testy_uar.obj : error LNK2019: nierozpoznany symbol zewnętrzny "void __cdecl TESTY_Wlasne::test_10_Uslugi_testSzumuWlaczonego(void)" (?test_10_Uslugi_testSzumuWlaczonego@TESTY_Wlasne@@YAXXZ) przywołany w funkcji "void __cdecl TESTY_Wlasne::wykonaj_testy(void)" (?wykonaj_testy@TESTY_Wlasne@@YAXXZ)
+C:\Users\igorj\Source\Repos\PKPROJEKT\x64\Debug\PKPROJEKT.exe : fatal error LNK1120: liczba nierozpoznanych elementów zewnętrznych: 5

@@ -1,4 +1,4 @@
-// TU includy:
+Ôªø// TU includy:
 
 #include <iostream>
 #include <iomanip>
@@ -8,11 +8,11 @@
 //#include "RegulatorOnOFF.h" // Tylko sekcje 3 osobowe
 #include "ProstyUAR.h"
 
-#define DEBUG  // ustaw na MAIN aby skompilowaÊ program docelowy / ustaw na DEBUG aby skompilowaÊ program testujacy 
+#define DEBUG  // ustaw na MAIN aby skompilowa√¶ program docelowy / ustaw na DEBUG aby skompilowa√¶ program testujacy 
 
 #ifdef DEBUG
 
-//Funkcje pomocnicze dla testÛw:
+//Funkcje pomocnicze dla test√≥w:
 
 void raportBleduSekwencji(std::vector<double>& spodz, std::vector<double>& fakt)
 {
@@ -29,7 +29,7 @@ void raportBleduSekwencji(std::vector<double>& spodz, std::vector<double>& fakt)
 
 bool porownanieSekwencji(std::vector<double>& spodz, std::vector<double>& fakt)
 {
-	constexpr double TOL = 1e-3;	// tolerancja dla porÛwnaÒ zmiennoprzecinkowych
+	constexpr double TOL = 1e-3;	// tolerancja dla por√≥wna√± zmiennoprzecinkowych
 	bool result = fakt.size() == spodz.size();
 	for (int i = 0; result && i < fakt.size(); i++)
 		result = fabs(fakt[i] - spodz[i]) < TOL;
@@ -84,7 +84,7 @@ void TESTY_ModelARX::test_brakPobudzenia()
 		for (int i = 0; i < LICZ_ITER; i++)
 			faktSygWy[i] = instancjaTestowa.symuluj(sygWe[i]);
 
-		// Walidacja poprawnoúci i raport:
+		// Walidacja poprawno≈ìci i raport:
 		myAssert(spodzSygWy, faktSygWy);
 	}
 	catch (...)
@@ -118,7 +118,7 @@ void TESTY_ModelARX::test_skokJednostkowy_1()
 		for (int i = 0; i < LICZ_ITER; i++)
 			faktSygWy[i] = instancjaTestowa.symuluj(sygWe[i]);
 
-		// Walidacja poprawnoúci i raport:
+		// Walidacja poprawno≈ìci i raport:
 		myAssert(spodzSygWy, faktSygWy);
 	}
 	catch (...)
@@ -150,7 +150,7 @@ void TESTY_ModelARX::test_skokJednostkowy_2()
 		for (int i = 0; i < LICZ_ITER; i++)
 			faktSygWy[i] = instancjaTestowa.symuluj(sygWe[i]);
 
-		// Walidacja poprawnoúci i raport:
+		// Walidacja poprawno≈ìci i raport:
 		myAssert(spodzSygWy, faktSygWy);
 	}
 	catch (...)
@@ -181,7 +181,7 @@ void TESTY_ModelARX::test_skokJednostkowy_3()
 		for (int i = 0; i < LICZ_ITER; i++)
 			faktSygWy[i] = instancjaTestowa.symuluj(sygWe[i]);
 
-		// Weryfikacja poprawnoúci i raport:
+		// Weryfikacja poprawno≈ìci i raport:
 		myAssert(spodzSygWy, faktSygWy);
 	}
 	catch (...)
@@ -232,7 +232,7 @@ void TESTY_RegulatorPID::test_P_brakPobudzenia()
 		for (int i = 0; i < LICZ_ITER; i++)
 			faktSygWy[i] = instancjaTestowa.symuluj(sygWe[i]);
 
-		// Walidacja poprawnoúci i raport:
+		// Walidacja poprawno≈ìci i raport:
 		myAssert(spodzSygWy, faktSygWy);
 	}
 	catch (...)
@@ -265,7 +265,7 @@ void TESTY_RegulatorPID::test_P_skokJednostkowy()
 		for (int i = 0; i < LICZ_ITER; i++)
 			faktSygWy[i] = instancjaTestowa.symuluj(sygWe[i]);
 
-		// Walidacja poprawnoúci i raport:
+		// Walidacja poprawno≈ìci i raport:
 		myAssert(spodzSygWy, faktSygWy);
 	}
 	catch (...)
@@ -299,7 +299,7 @@ void TESTY_RegulatorPID::test_PI_skokJednostkowy_1()
 		for (int i = 0; i < LICZ_ITER; i++)
 			faktSygWy[i] = instancjaTestowa.symuluj(sygWe[i]);
 
-		// Walidacja poprawnoúci i raport:
+		// Walidacja poprawno≈ìci i raport:
 		myAssert(spodzSygWy, faktSygWy);
 	}
 	catch (...)
@@ -332,7 +332,7 @@ void TESTY_RegulatorPID::test_PI_skokJednostkowy_2()
 		for (int i = 0; i < LICZ_ITER; i++)
 			faktSygWy[i] = instancjaTestowa.symuluj(sygWe[i]);
 
-		// Walidacja poprawnoúci i raport:
+		// Walidacja poprawno≈ìci i raport:
 		myAssert(spodzSygWy, faktSygWy);
 	}
 	catch (...)
@@ -365,7 +365,7 @@ void TESTY_RegulatorPID::test_PID_skokJednostkowy()
 		for (int i = 0; i < LICZ_ITER; i++)
 			faktSygWy[i] = instancjaTestowa.symuluj(sygWe[i]);
 
-		// Walidacja poprawnoúci i raport:
+		// Walidacja poprawno≈ìci i raport:
 		myAssert(spodzSygWy, faktSygWy);
 	}
 	catch (...)
@@ -397,22 +397,22 @@ void TESTY_RegulatorPID::test_PI_skokJednostkowy_3()
 		// Symulacja modelu:
 		for (int i = 0; i < LICZ_ITER; i++)
 		{
-			if (i == LICZ_ITER * 1 / 5) // przelaczenie na wew. liczenie calki - nie powinno byÊ zauwaøalane
+			if (i == LICZ_ITER * 1 / 5) // przelaczenie na wew. liczenie calki - nie powinno by√¶ zauwa¬øalane
 				instancjaTestowa.setLiczCalk(RegulatorPID::LiczCalk::Wew);
 			if (i == LICZ_ITER * 2 / 5) // zmiana stalej calkowania - powinna byc tylko zmiana nachylenia 
 				instancjaTestowa.setStalaCalk(5.0);
-			if (i == LICZ_ITER * 3 / 5) // przelaczenie na zew. liczenie calki - nie powinno byÊ zauwaøalane
+			if (i == LICZ_ITER * 3 / 5) // przelaczenie na zew. liczenie calki - nie powinno by√¶ zauwa¬øalane
 				instancjaTestowa.setLiczCalk(RegulatorPID::LiczCalk::Zew);
 			if (i == LICZ_ITER * 4 / 5) // zmiana stalej calkowania - powinien wsytapic skok wartosci i zmiana nachylenia 
 				instancjaTestowa.setStalaCalk(10.0);
 			faktSygWy[i] = instancjaTestowa.symuluj(sygWe[i]);
 		}
-		// Uwaga przy poprawnej implementacji zmiany sposobu liczenia ca≥ki, nie powinno doúÊ do sytuacji, gdy
-		// zmiana sposobu liczenia powoduje skokowπ zmianÍ wartoúci sterowania. dla liczenia ca≥ki zwenetrznie
-		// zmiana stalej calkowania powinna powodowaÊ skok. dla liczenia wewnÍtrznego, powinno sie tylko zmienic
+		// Uwaga przy poprawnej implementacji zmiany sposobu liczenia ca¬≥ki, nie powinno do≈ì√¶ do sytuacji, gdy
+		// zmiana sposobu liczenia powoduje skokow¬π zmian√™ warto≈ìci sterowania. dla liczenia ca¬≥ki zwenetrznie
+		// zmiana stalej calkowania powinna powodowa√¶ skok. dla liczenia wewn√™trznego, powinno sie tylko zmienic
 		// nachylenie.
 
-		// Walidacja poprawnoúci i raport:
+		// Walidacja poprawno≈ìci i raport:
 		myAssert(spodzSygWy, faktSygWy);
 	}
 	catch (...)
@@ -464,7 +464,7 @@ void TESTY_ProstyUAR::test_UAR_1_brakPobudzenia()
 		for (int i = 0; i < LICZ_ITER; i++)
 			faktSygWy[i] = instancjaTestowa.symuluj(sygWe[i]);
 
-		// Walidacja poprawnoúci i raport:
+		// Walidacja poprawno≈ìci i raport:
 		myAssert(spodzSygWy, faktSygWy);
 	}
 	catch (...)
@@ -502,7 +502,7 @@ void TESTY_ProstyUAR::test_UAR_1_skokJednostkowyPID()
 		for (int i = 0; i < LICZ_ITER; i++)
 			faktSygWy[i] = instancjaTestowa.symuluj(sygWe[i]);
 
-		// Walidacja poprawnoúci i raport:
+		// Walidacja poprawno≈ìci i raport:
 		myAssert(spodzSygWy, faktSygWy);
 	}
 	catch (...)
@@ -539,7 +539,7 @@ void TESTY_ProstyUAR::test_UAR_2_skokJednostkowyPID()
 		for (int i = 0; i < LICZ_ITER; i++)
 			faktSygWy[i] = instancjaTestowa.symuluj(sygWe[i]);
 
-		// Walidacja poprawnoúci i raport:
+		// Walidacja poprawno≈ìci i raport:
 		myAssert(spodzSygWy, faktSygWy);
 	}
 	catch (...)
@@ -576,7 +576,176 @@ void TESTY_ProstyUAR::test_UAR_3_skokJednostkowyPID()
 		for (int i = 0; i < LICZ_ITER; i++)
 			faktSygWy[i] = instancjaTestowa.symuluj(sygWe[i]);
 
-		// Walidacja poprawnoúci i raport:
+		// Walidacja poprawno≈ìci i raport:
+		myAssert(spodzSygWy, faktSygWy);
+	}
+	catch (...)
+	{
+		std::cerr << "INTERUPTED! (niespodziwany wyjatek)\n";
+	}
+}
+
+// --------------------------------------------------------------------------------------------------
+// SEKCJA TESTOWA DLA W≈ÅASNYCH PRZYPADK√ìW (10 unikalnych test√≥w)
+// --------------------------------------------------------------------------------------------------
+
+namespace TESTY_Wlasne
+{
+	void wykonaj_testy();
+	void test_1_PID_resetPamieci();
+	void test_2_PID_reakcjaNaUjemnyUchyb();
+	void test_3_ARX_testOgraniczeniaSterowania();
+	void test_4_ARX_testWzmocnieniaZerowego();
+	void test_5_Generator_prostokatWypelnienie();
+	void test_6_Uslugi_dynamicznaZmianaKp();
+	void test_7_Uslugi_integracjaGeneratora();
+	void test_8_Uslugi_testPelnegoResetu();
+	void test_9_Uslugi_testSzumuWylaczonego();
+	void test_10_Uslugi_testSzumuWlaczonego();
+}
+
+void TESTY_Wlasne::wykonaj_testy()
+{
+	std::cerr << "\n--- TESTY W≈ÅASNE (5 Jednostkowych + 5 Integracyjnych) ---\n";
+	test_1_PID_resetPamieci();
+	test_2_PID_reakcjaNaUjemnyUchyb();
+	test_3_ARX_testOgraniczeniaSterowania();
+	test_4_ARX_testWzmocnieniaZerowego();
+	test_5_Generator_prostokatWypelnienie();
+	test_6_Uslugi_dynamicznaZmianaKp();
+	test_7_Uslugi_integracjaGeneratora();
+	test_8_Uslugi_testPelnegoResetu();
+	test_9_Uslugi_testSzumuWylaczonego();
+	test_10_Uslugi_testSzumuWlaczonego();
+}
+
+// --------------------------------------------------------------------------------------------------
+// WARSTWA DANYCH (TESTY JEDNOSTKOWE)
+// --------------------------------------------------------------------------------------------------
+
+// Test 1: Reset pamiƒôci ca≈ÇkujƒÖcej (RegulatorPID::resetPID)
+void TESTY_Wlasne::test_1_PID_resetPamieci()
+{
+	std::cerr << "1. PID -> test resetu pamieci calkujacej: ";
+	try
+	{
+		RegulatorPID instancjaTestowa(1.0, 1.0);
+
+		instancjaTestowa.symuluj(1.0);
+		instancjaTestowa.symuluj(1.0);
+
+		// U≈ºywamy metody z ProstyUAR.h (kt√≥ra deleguje do resetujcalke/rozniczke)
+		instancjaTestowa.resetujcalke();
+
+		// Sprawdzenie, czy U wychodzi jako czyste P = 1.0 (po resecie I)
+		std::vector<double> spodz = { 1.0 };
+		std::vector<double> fakt = { instancjaTestowa.symuluj(1.0) };
+
+		myAssert(spodz, fakt);
+	}
+	catch (...)
+	{
+		std::cerr << "INTERUPTED! (niespodziwany wyjatek)\n";
+	}
+}
+
+// Test 2: Reakcja na ujemny uchyb (ujemna akumulacja I)
+void TESTY_Wlasne::test_2_PID_reakcjaNaUjemnyUchyb()
+{
+	std::cerr << "2. PID -> test reakcji na staly ujemny uchyb: ";
+	try
+	{
+		RegulatorPID instancjaTestowa(2.0, 1.0); // PI (Kp=2.0, Ti=1.0)
+		constexpr size_t LICZ_ITER = 3;
+		std::vector<double> sygWe(LICZ_ITER, -1.0); // Uchyb = -1.0
+
+		// Oczekiwane U: {-3.0, -4.0, -5.0} (P=-2.0, I=-1.0, -2.0, -3.0)
+		std::vector<double> spodzSygWy = { -3.0, -4.0, -5.0 };
+		std::vector<double> faktSygWy(LICZ_ITER);
+
+		for (int i = 0; i < LICZ_ITER; i++)
+			faktSygWy[i] = instancjaTestowa.symuluj(sygWe[i]);
+
+		myAssert(spodzSygWy, faktSygWy);
+	}
+	catch (...)
+	{
+		std::cerr << "INTERUPTED! (niespodziwany wyjatek)\n";
+	}
+}
+
+// Test 3: Obciƒôcie sterowania U na wej≈õciu ARX (ModelARX::setLimit)
+void TESTY_Wlasne::test_3_ARX_testOgraniczeniaSterowania()
+{
+	std::cerr << "3. ARX -> test ograniczenia wejscia U (Umax=5): ";
+	try
+	{
+		ModelARX instancjaTestowa({ -0.4 }, { 0.6 }, 1, 0.0);
+		// Ustawienie limitu MAX U = 5.0 (Wymaga metody setLimit(4 args))
+		instancjaTestowa.setLimit(1.0, 5.0, -10.0, 10.0);
+
+		constexpr size_t LICZ_ITER = 2;
+		std::vector<double> sygWe = { 10.0, 3.0 }; // Test 10.0 (obciƒôte), 3.0 (nieobciƒôte)
+
+		// Oczekiwany wynik obliczony na podstawie obciƒôtych warto≈õci U=5.0 i U=3.0
+		std::vector<double> spodzSygWy = { 0.0, 3.0 }; // y[1]=0.6*5.0 + 0.4*0.0 = 3.0
+		std::vector<double> faktSygWy(LICZ_ITER);
+
+		for (int i = 0; i < LICZ_ITER; i++)
+			faktSygWy[i] = instancjaTestowa.symuluj(sygWe[i]);
+
+		myAssert(spodzSygWy, faktSygWy);
+	}
+	catch (...)
+	{
+		std::cerr << "INTERUPTED! (niespodziwany wyjatek)\n";
+	}
+}
+
+// Test 4: Test zerowego wzmocnienia ARX (A={}, B={})
+void TESTY_Wlasne::test_4_ARX_testWzmocnieniaZerowego()
+{
+	std::cerr << "4. ARX -> test zerowego wzmocnienia (A={}, B={}): ";
+	try
+	{
+		// Sprawdza poprawno≈õƒá obs≈Çugi pustych wektor√≥w wsp√≥≈Çczynnik√≥w
+		ModelARX instancjaTestowa({}, {}, 1, 0.0);
+		constexpr size_t LICZ_ITER = 5;
+		std::vector<double> sygWe(LICZ_ITER, 10.0); // Du≈ºe pobudzenie
+		std::vector<double> spodzSygWy(LICZ_ITER, 0.0); // Oczekujemy samych zer
+		std::vector<double> faktSygWy(LICZ_ITER);
+
+		for (int i = 0; i < LICZ_ITER; i++)
+			faktSygWy[i] = instancjaTestowa.symuluj(sygWe[i]);
+
+		myAssert(spodzSygWy, faktSygWy);
+	}
+	catch (...)
+	{
+		std::cerr << "INTERUPTED! (niespodziwany wyjatek)\n";
+	}
+}
+
+// Test 5: Test Generatora ProstokƒÖtnego (Wype≈Çnienie 0.75)
+void TESTY_Wlasne::test_5_Generator_prostokatWypelnienie()
+{
+	std::cerr << "5. Generator -> test wypelnienia 0.75 (T=4): ";
+	try
+	{
+		GeneratorProstokat gen;
+		gen.setOkres(4);
+		gen.setWypelnienie(0.75); // HIGH przez 3 kroki, LOW przez 1 krok
+		gen.setAmplituda(1.0);
+		gen.setStala(0.0);
+
+		constexpr size_t LICZ_ITER = 8;
+		// Oczekiwana sekwencja: { 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0 }
+		std::vector<double> spodzSygWy = { 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0 };
+		std::vector<double> faktSygWy(LICZ_ITER);
+
+		for (int i = 0; i < LICZ_ITER; i++)
+			faktSygWy[i] = gen.wynikProstokat(i);
+
 		myAssert(spodzSygWy, faktSygWy);
 	}
 	catch (...)

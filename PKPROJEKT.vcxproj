@@ -129,12 +129,14 @@
     <ClCompile Include="ProstyUAR.cpp" />
     <ClCompile Include="RegulatorPID.cpp" />
     <ClCompile Include="testy_uar.cpp" />
+    <ClCompile Include="WarstwaUslug.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratorWartosci.h" />
     <ClInclude Include="ModelARX.h" />
     <ClInclude Include="ProstyUAR.h" />
     <ClInclude Include="RegulatorPID.h" />
+    <ClInclude Include="WarstwaUslug.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

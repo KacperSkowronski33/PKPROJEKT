@@ -23,6 +23,24 @@ void ModelARX::setCzyWlasnyLim(bool wlasnyLim)
 	m_czyWlasnyLimit = wlasnyLim;
 }
 
+void ModelARX::setWekA(const std::vector<double>& A)
+{
+	m_wspWektorA = A;
+	m_kolejkaWyj.resize(A.size());
+}
+
+void ModelARX::setWekB(const std::vector<double>& B)
+{
+	m_wspWektorB = B;
+	m_kolejkaWej.resize(B.size());
+}
+
+void ModelARX::setOpoznienie(int opoznienie)
+{
+	m_opoznienie = opoznienie;
+	m_buforOpoznienia.resize(opoznienie); //automatycznie sie dostosowywuje wiec nie trzeba sprawdzac warunku 
+}
+
 bool ModelARX::getCzyWlasnyLim()
 {
 	return m_czyWlasnyLimit;
@@ -80,6 +98,10 @@ double ModelARX::symuluj(double aktualnaWartSter)
 
 	double wartReg = sumaB - sumaA;
 
+	if (m_odchStd != 0.0) { //jezeli 0.0 to wart domyslna - nie ma sensu uruchamiac generatora liczb losowych 
+		wartReg += genZaklocen();
+	}
+
 	if (getCzyLimit()) {
 		wartReg = setLimitWart(wartReg);
 	}
@@ -106,3 +128,20 @@ double ModelARX::setLimitWart(double wartSter)
 	return wartPoLim;
 }
 
+void ModelARX::setOdchylenie(double odchylenie)
+{
+	m_odchStd = odchylenie;
+}
+
+double ModelARX::genZaklocen()
+{
+	double wynik = m_rozkladNormalny(m_generator) * m_odchStd;
+	return wynik;
+}
+
+void ModelARX::resetARX()
+{
+	std::fill(m_kolejkaWej.begin(), m_kolejkaWej.end(), 0.0);
+	std::fill(m_kolejkaWyj.begin(), m_kolejkaWyj.end(), 0.0);
+	std::fill(m_buforOpoznienia.begin(), m_buforOpoznienia.end(), 0.0);
+}
