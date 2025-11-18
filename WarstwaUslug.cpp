@@ -30,3 +30,4 @@ WarstwaUslug::Wykres WarstwaUslug::wykonajKrokSym()
 
 	return wykresy;
 }
+

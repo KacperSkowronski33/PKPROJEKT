@@ -10,8 +10,8 @@ public:
 
 	Wykres wykonajKrokSym(); //do tworzenia wykresow
 
-	void zapiszKonfig();
-	void wczytajKonfig();
+	//void zapiszKonfig();
+	//void wczytajKonfig();
 private:
 	ProstyUAR m_uar;
 	RodzajSygnalu m_rodzajSyg;
@@ -19,6 +19,6 @@ private:
 	GeneratorProstokat m_sygPro; //do generowania prostokata
 	int m_krokSym;				 //krok symulacji
 
-	const char* m_nazwaPliku;
+	//const char* m_nazwaPliku;
 };
 
