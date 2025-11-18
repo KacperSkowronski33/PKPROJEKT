@@ -7,6 +7,7 @@
 #include "RegulatorPID.h"
 //#include "RegulatorOnOFF.h" // Tylko sekcje 3 osobowe
 #include "ProstyUAR.h"
+#include "WarstwaUslug.h"
 
 #define DEBUG  // ustaw na MAIN aby skompilowaæ program docelowy / ustaw na DEBUG aby skompilowaæ program testujacy 
 
@@ -753,6 +754,27 @@ void TESTY_Wlasne::test_5_Generator_prostokatWypelnienie()
 		std::cerr << "INTERUPTED! (niespodziwany wyjatek)\n";
 	}
 }
+
+//testy warstwa uslug
+namespace TESTY_WarstwaUslug
+{
+	void wykonaj_testy();
+	void test1();
+
+}
+void TESTY_WarstwaUslug::wykonaj_testy()
+{
+	std::cerr << "TESTY_WarstwaUslug:\n";
+	test1();
+}
+
+void TESTY_WarstwaUslug::test1()
+{
+	std::cerr << "  test1: ";
+	
+}
+
+
 
 
 int main()

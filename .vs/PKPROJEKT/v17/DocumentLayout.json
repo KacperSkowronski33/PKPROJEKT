@@ -1,54 +1,54 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\kskow\\Desktop\\pkprojekt\\PKPROJEKT\\",
+  "WorkspaceRootPath": "C:\\Users\\igorj\\OneDrive\\Documents\\GitHub\\PKPROJEKT\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{683158CB-C256-4222-AFA2-A6096D97257D}|PKPROJEKT.vcxproj|C:\\Users\\kskow\\Desktop\\pkprojekt\\PKPROJEKT\\WarstwaUslug.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{683158CB-C256-4222-AFA2-A6096D97257D}|PKPROJEKT.vcxproj|C:\\Users\\igorj\\OneDrive\\Documents\\GitHub\\PKPROJEKT\\WarstwaUslug.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{683158CB-C256-4222-AFA2-A6096D97257D}|PKPROJEKT.vcxproj|solutionrelative:WarstwaUslug.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{683158CB-C256-4222-AFA2-A6096D97257D}|PKPROJEKT.vcxproj|C:\\Users\\kskow\\Desktop\\pkprojekt\\PKPROJEKT\\GeneratorWartosci.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{683158CB-C256-4222-AFA2-A6096D97257D}|PKPROJEKT.vcxproj|solutionrelative:GeneratorWartosci.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{683158CB-C256-4222-AFA2-A6096D97257D}|PKPROJEKT.vcxproj|C:\\Users\\kskow\\Desktop\\pkprojekt\\PKPROJEKT\\ProstyUAR.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{683158CB-C256-4222-AFA2-A6096D97257D}|PKPROJEKT.vcxproj|solutionrelative:ProstyUAR.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{683158CB-C256-4222-AFA2-A6096D97257D}|PKPROJEKT.vcxproj|C:\\Users\\kskow\\Desktop\\pkprojekt\\PKPROJEKT\\GeneratorWartosci.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{683158CB-C256-4222-AFA2-A6096D97257D}|PKPROJEKT.vcxproj|solutionrelative:GeneratorWartosci.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{683158CB-C256-4222-AFA2-A6096D97257D}|PKPROJEKT.vcxproj|C:\\Users\\kskow\\Desktop\\pkprojekt\\PKPROJEKT\\ProstyUAR.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{683158CB-C256-4222-AFA2-A6096D97257D}|PKPROJEKT.vcxproj|solutionrelative:ProstyUAR.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{683158CB-C256-4222-AFA2-A6096D97257D}|PKPROJEKT.vcxproj|C:\\Users\\kskow\\Desktop\\pkprojekt\\PKPROJEKT\\WarstwaUslug.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{683158CB-C256-4222-AFA2-A6096D97257D}|PKPROJEKT.vcxproj|solutionrelative:WarstwaUslug.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{683158CB-C256-4222-AFA2-A6096D97257D}|PKPROJEKT.vcxproj|C:\\Users\\kskow\\Desktop\\pkprojekt\\PKPROJEKT\\RegulatorPID.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{683158CB-C256-4222-AFA2-A6096D97257D}|PKPROJEKT.vcxproj|solutionrelative:RegulatorPID.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{683158CB-C256-4222-AFA2-A6096D97257D}|PKPROJEKT.vcxproj|C:\\Users\\kskow\\Desktop\\pkprojekt\\PKPROJEKT\\RegulatorPID.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{683158CB-C256-4222-AFA2-A6096D97257D}|PKPROJEKT.vcxproj|solutionrelative:RegulatorPID.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{683158CB-C256-4222-AFA2-A6096D97257D}|PKPROJEKT.vcxproj|C:\\Users\\kskow\\Desktop\\pkprojekt\\PKPROJEKT\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{683158CB-C256-4222-AFA2-A6096D97257D}|PKPROJEKT.vcxproj|solutionrelative:main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{683158CB-C256-4222-AFA2-A6096D97257D}|PKPROJEKT.vcxproj|C:\\Users\\kskow\\Desktop\\pkprojekt\\PKPROJEKT\\testy_uar.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{683158CB-C256-4222-AFA2-A6096D97257D}|PKPROJEKT.vcxproj|C:\\Users\\igorj\\OneDrive\\Documents\\GitHub\\PKPROJEKT\\testy_uar.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{683158CB-C256-4222-AFA2-A6096D97257D}|PKPROJEKT.vcxproj|solutionrelative:testy_uar.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{683158CB-C256-4222-AFA2-A6096D97257D}|PKPROJEKT.vcxproj|C:\\Users\\kskow\\Desktop\\pkprojekt\\PKPROJEKT\\ModelARX.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{683158CB-C256-4222-AFA2-A6096D97257D}|PKPROJEKT.vcxproj|C:\\Users\\igorj\\OneDrive\\Documents\\GitHub\\PKPROJEKT\\RegulatorPID.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{683158CB-C256-4222-AFA2-A6096D97257D}|PKPROJEKT.vcxproj|solutionrelative:RegulatorPID.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{683158CB-C256-4222-AFA2-A6096D97257D}|PKPROJEKT.vcxproj|C:\\Users\\igorj\\OneDrive\\Documents\\GitHub\\PKPROJEKT\\RegulatorPID.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{683158CB-C256-4222-AFA2-A6096D97257D}|PKPROJEKT.vcxproj|solutionrelative:RegulatorPID.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{683158CB-C256-4222-AFA2-A6096D97257D}|PKPROJEKT.vcxproj|C:\\Users\\igorj\\OneDrive\\Documents\\GitHub\\PKPROJEKT\\WarstwaUslug.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{683158CB-C256-4222-AFA2-A6096D97257D}|PKPROJEKT.vcxproj|solutionrelative:WarstwaUslug.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{683158CB-C256-4222-AFA2-A6096D97257D}|PKPROJEKT.vcxproj|C:\\Users\\igorj\\OneDrive\\Documents\\GitHub\\PKPROJEKT\\ModelARX.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{683158CB-C256-4222-AFA2-A6096D97257D}|PKPROJEKT.vcxproj|solutionrelative:ModelARX.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{683158CB-C256-4222-AFA2-A6096D97257D}|PKPROJEKT.vcxproj|C:\\Users\\kskow\\Desktop\\pkprojekt\\PKPROJEKT\\ModelARX.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{683158CB-C256-4222-AFA2-A6096D97257D}|PKPROJEKT.vcxproj|C:\\Users\\igorj\\OneDrive\\Documents\\GitHub\\PKPROJEKT\\ProstyUAR.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{683158CB-C256-4222-AFA2-A6096D97257D}|PKPROJEKT.vcxproj|solutionrelative:ProstyUAR.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{683158CB-C256-4222-AFA2-A6096D97257D}|PKPROJEKT.vcxproj|C:\\Users\\igorj\\OneDrive\\Documents\\GitHub\\PKPROJEKT\\GeneratorWartosci.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{683158CB-C256-4222-AFA2-A6096D97257D}|PKPROJEKT.vcxproj|solutionrelative:GeneratorWartosci.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{683158CB-C256-4222-AFA2-A6096D97257D}|PKPROJEKT.vcxproj|C:\\Users\\igorj\\OneDrive\\Documents\\GitHub\\PKPROJEKT\\GeneratorWartosci.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{683158CB-C256-4222-AFA2-A6096D97257D}|PKPROJEKT.vcxproj|solutionrelative:GeneratorWartosci.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{683158CB-C256-4222-AFA2-A6096D97257D}|PKPROJEKT.vcxproj|C:\\Users\\igorj\\OneDrive\\Documents\\GitHub\\PKPROJEKT\\ProstyUAR.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{683158CB-C256-4222-AFA2-A6096D97257D}|PKPROJEKT.vcxproj|solutionrelative:ProstyUAR.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{683158CB-C256-4222-AFA2-A6096D97257D}|PKPROJEKT.vcxproj|C:\\Users\\igorj\\OneDrive\\Documents\\GitHub\\PKPROJEKT\\ModelARX.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{683158CB-C256-4222-AFA2-A6096D97257D}|PKPROJEKT.vcxproj|solutionrelative:ModelARX.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{683158CB-C256-4222-AFA2-A6096D97257D}|PKPROJEKT.vcxproj|C:\\Users\\igorj\\OneDrive\\Documents\\GitHub\\PKPROJEKT\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{683158CB-C256-4222-AFA2-A6096D97257D}|PKPROJEKT.vcxproj|solutionrelative:main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -70,13 +70,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 4,
               "Title": "WarstwaUslug.cpp",
-              "DocumentMoniker": "C:\\Users\\kskow\\Desktop\\pkprojekt\\PKPROJEKT\\WarstwaUslug.cpp",
+              "DocumentMoniker": "C:\\Users\\igorj\\OneDrive\\Documents\\GitHub\\PKPROJEKT\\WarstwaUslug.cpp",
               "RelativeDocumentMoniker": "WarstwaUslug.cpp",
-              "ToolTip": "C:\\Users\\kskow\\Desktop\\pkprojekt\\PKPROJEKT\\WarstwaUslug.cpp",
+              "ToolTip": "C:\\Users\\igorj\\OneDrive\\Documents\\GitHub\\PKPROJEKT\\WarstwaUslug.cpp",
               "RelativeToolTip": "WarstwaUslug.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-11-17T19:37:50.174Z",
               "EditorCaption": ""
@@ -85,136 +85,135 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "WarstwaUslug.h",
-              "DocumentMoniker": "C:\\Users\\kskow\\Desktop\\pkprojekt\\PKPROJEKT\\WarstwaUslug.h",
+              "DocumentMoniker": "C:\\Users\\igorj\\OneDrive\\Documents\\GitHub\\PKPROJEKT\\WarstwaUslug.h",
               "RelativeDocumentMoniker": "WarstwaUslug.h",
-              "ToolTip": "C:\\Users\\kskow\\Desktop\\pkprojekt\\PKPROJEKT\\WarstwaUslug.h",
-              "RelativeToolTip": "WarstwaUslug.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAADAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\igorj\\OneDrive\\Documents\\GitHub\\PKPROJEKT\\WarstwaUslug.h*",
+              "RelativeToolTip": "WarstwaUslug.h*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-11-17T19:33:09.418Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "ProstyUAR.cpp",
-              "DocumentMoniker": "C:\\Users\\kskow\\Desktop\\pkprojekt\\PKPROJEKT\\ProstyUAR.cpp",
+              "DocumentMoniker": "C:\\Users\\igorj\\OneDrive\\Documents\\GitHub\\PKPROJEKT\\ProstyUAR.cpp",
               "RelativeDocumentMoniker": "ProstyUAR.cpp",
-              "ToolTip": "C:\\Users\\kskow\\Desktop\\pkprojekt\\PKPROJEKT\\ProstyUAR.cpp",
+              "ToolTip": "C:\\Users\\igorj\\OneDrive\\Documents\\GitHub\\PKPROJEKT\\ProstyUAR.cpp",
               "RelativeToolTip": "ProstyUAR.cpp",
-              "ViewState": "AgIAACQAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-11-16T16:53:38.261Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 8,
               "Title": "GeneratorWartosci.cpp",
-              "DocumentMoniker": "C:\\Users\\kskow\\Desktop\\pkprojekt\\PKPROJEKT\\GeneratorWartosci.cpp",
+              "DocumentMoniker": "C:\\Users\\igorj\\OneDrive\\Documents\\GitHub\\PKPROJEKT\\GeneratorWartosci.cpp",
               "RelativeDocumentMoniker": "GeneratorWartosci.cpp",
-              "ToolTip": "C:\\Users\\kskow\\Desktop\\pkprojekt\\PKPROJEKT\\GeneratorWartosci.cpp",
+              "ToolTip": "C:\\Users\\igorj\\OneDrive\\Documents\\GitHub\\PKPROJEKT\\GeneratorWartosci.cpp",
               "RelativeToolTip": "GeneratorWartosci.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACoAAAAXAAAAAAAAAA==",
+              "ViewState": "AgIAABwAAAAAAAAAAAAjwDQAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-11-16T15:47:32.403Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "GeneratorWartosci.h",
-              "DocumentMoniker": "C:\\Users\\kskow\\Desktop\\pkprojekt\\PKPROJEKT\\GeneratorWartosci.h",
-              "RelativeDocumentMoniker": "GeneratorWartosci.h",
-              "ToolTip": "C:\\Users\\kskow\\Desktop\\pkprojekt\\PKPROJEKT\\GeneratorWartosci.h",
-              "RelativeToolTip": "GeneratorWartosci.h",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAACQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-11-16T15:18:33.418Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ProstyUAR.h",
-              "DocumentMoniker": "C:\\Users\\kskow\\Desktop\\pkprojekt\\PKPROJEKT\\ProstyUAR.h",
-              "RelativeDocumentMoniker": "ProstyUAR.h",
-              "ToolTip": "C:\\Users\\kskow\\Desktop\\pkprojekt\\PKPROJEKT\\ProstyUAR.h",
-              "RelativeToolTip": "ProstyUAR.h",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABkAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-11-16T15:09:26.221Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-16T15:47:32.403Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
+              "Title": "GeneratorWartosci.h",
+              "DocumentMoniker": "C:\\Users\\igorj\\OneDrive\\Documents\\GitHub\\PKPROJEKT\\GeneratorWartosci.h",
+              "RelativeDocumentMoniker": "GeneratorWartosci.h",
+              "ToolTip": "C:\\Users\\igorj\\OneDrive\\Documents\\GitHub\\PKPROJEKT\\GeneratorWartosci.h",
+              "RelativeToolTip": "GeneratorWartosci.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-11-16T15:18:33.418Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ProstyUAR.h",
+              "DocumentMoniker": "C:\\Users\\igorj\\OneDrive\\Documents\\GitHub\\PKPROJEKT\\ProstyUAR.h",
+              "RelativeDocumentMoniker": "ProstyUAR.h",
+              "ToolTip": "C:\\Users\\igorj\\OneDrive\\Documents\\GitHub\\PKPROJEKT\\ProstyUAR.h",
+              "RelativeToolTip": "ProstyUAR.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-11-16T15:09:26.221Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "RegulatorPID.cpp",
-              "DocumentMoniker": "C:\\Users\\kskow\\Desktop\\pkprojekt\\PKPROJEKT\\RegulatorPID.cpp",
+              "DocumentMoniker": "C:\\Users\\igorj\\OneDrive\\Documents\\GitHub\\PKPROJEKT\\RegulatorPID.cpp",
               "RelativeDocumentMoniker": "RegulatorPID.cpp",
-              "ToolTip": "C:\\Users\\kskow\\Desktop\\pkprojekt\\PKPROJEKT\\RegulatorPID.cpp",
+              "ToolTip": "C:\\Users\\igorj\\OneDrive\\Documents\\GitHub\\PKPROJEKT\\RegulatorPID.cpp",
               "RelativeToolTip": "RegulatorPID.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAACYAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-11-16T15:02:49.342Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 5,
               "Title": "ModelARX.cpp",
-              "DocumentMoniker": "C:\\Users\\kskow\\Desktop\\pkprojekt\\PKPROJEKT\\ModelARX.cpp",
+              "DocumentMoniker": "C:\\Users\\igorj\\OneDrive\\Documents\\GitHub\\PKPROJEKT\\ModelARX.cpp",
               "RelativeDocumentMoniker": "ModelARX.cpp",
-              "ToolTip": "C:\\Users\\kskow\\Desktop\\pkprojekt\\PKPROJEKT\\ModelARX.cpp",
+              "ToolTip": "C:\\Users\\igorj\\OneDrive\\Documents\\GitHub\\PKPROJEKT\\ModelARX.cpp",
               "RelativeToolTip": "ModelARX.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAAfAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-11-16T15:03:44.401Z"
+              "WhenOpened": "2025-11-16T15:03:44.401Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 3,
               "Title": "RegulatorPID.h",
-              "DocumentMoniker": "C:\\Users\\kskow\\Desktop\\pkprojekt\\PKPROJEKT\\RegulatorPID.h",
+              "DocumentMoniker": "C:\\Users\\igorj\\OneDrive\\Documents\\GitHub\\PKPROJEKT\\RegulatorPID.h",
               "RelativeDocumentMoniker": "RegulatorPID.h",
-              "ToolTip": "C:\\Users\\kskow\\Desktop\\pkprojekt\\PKPROJEKT\\RegulatorPID.h",
+              "ToolTip": "C:\\Users\\igorj\\OneDrive\\Documents\\GitHub\\PKPROJEKT\\RegulatorPID.h",
               "RelativeToolTip": "RegulatorPID.h",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAACsAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-11-16T15:01:34.186Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 1,
               "Title": "testy_uar.cpp",
-              "DocumentMoniker": "C:\\Users\\kskow\\Desktop\\pkprojekt\\PKPROJEKT\\testy_uar.cpp",
+              "DocumentMoniker": "C:\\Users\\igorj\\OneDrive\\Documents\\GitHub\\PKPROJEKT\\testy_uar.cpp",
               "RelativeDocumentMoniker": "testy_uar.cpp",
-              "ToolTip": "C:\\Users\\kskow\\Desktop\\pkprojekt\\PKPROJEKT\\testy_uar.cpp",
+              "ToolTip": "C:\\Users\\igorj\\OneDrive\\Documents\\GitHub\\PKPROJEKT\\testy_uar.cpp",
               "RelativeToolTip": "testy_uar.cpp",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAQwFQCAAAGAAAAAAAAAA==",
+              "ViewState": "AgIAAPcBAAAAAAAAAAAQwFwCAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-11-16T14:58:18.717Z"
+              "WhenOpened": "2025-11-16T14:58:18.717Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 10,
               "Title": "ModelARX.h",
-              "DocumentMoniker": "C:\\Users\\kskow\\Desktop\\pkprojekt\\PKPROJEKT\\ModelARX.h",
+              "DocumentMoniker": "C:\\Users\\igorj\\OneDrive\\Documents\\GitHub\\PKPROJEKT\\ModelARX.h",
               "RelativeDocumentMoniker": "ModelARX.h",
-              "ToolTip": "C:\\Users\\kskow\\Desktop\\pkprojekt\\PKPROJEKT\\ModelARX.h",
+              "ToolTip": "C:\\Users\\igorj\\OneDrive\\Documents\\GitHub\\PKPROJEKT\\ModelARX.h",
               "RelativeToolTip": "ModelARX.h",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAACQAAAAkAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAACQAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-11-16T14:50:05.058Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 11,
               "Title": "main.cpp",
-              "DocumentMoniker": "C:\\Users\\kskow\\Desktop\\pkprojekt\\PKPROJEKT\\main.cpp",
+              "DocumentMoniker": "C:\\Users\\igorj\\OneDrive\\Documents\\GitHub\\PKPROJEKT\\main.cpp",
               "RelativeDocumentMoniker": "main.cpp",
-              "ToolTip": "C:\\Users\\kskow\\Desktop\\pkprojekt\\PKPROJEKT\\main.cpp",
+              "ToolTip": "C:\\Users\\igorj\\OneDrive\\Documents\\GitHub\\PKPROJEKT\\main.cpp",
               "RelativeToolTip": "main.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
