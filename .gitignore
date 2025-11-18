@@ -44,3 +44,5 @@
 *.vsidx
 /.vs
 *.json
+*.suo
+*.db
