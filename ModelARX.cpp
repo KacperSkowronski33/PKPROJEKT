@@ -139,3 +139,9 @@ double ModelARX::genZaklocen()
 	return wynik;
 }
 
+void ModelARX::resetARX()
+{
+	std::fill(m_kolejkaWej.begin(), m_kolejkaWej.end(), 0.0);
+	std::fill(m_kolejkaWyj.begin(), m_kolejkaWyj.end(), 0.0);
+	std::fill(m_buforOpoznienia.begin(), m_buforOpoznienia.end(), 0.0);
+}

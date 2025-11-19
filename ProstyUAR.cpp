@@ -7,7 +7,10 @@ void ProstyUAR::setPID(double k, double Ti, double Td)
 
 void ProstyUAR::setARX(const std::vector<double>& A, const std::vector<double>& B, int opoznienie, double zaklocenie)
 {
-
+    m_modelARX.setWekA(A);
+    m_modelARX.setWekB(B);
+    m_modelARX.setOpoznienie(opoznienie);
+    m_modelARX.setOdchylenie(zaklocenie);
 }
 
 double ProstyUAR::getKrok()
@@ -49,4 +52,31 @@ double ProstyUAR::symuluj(double sygWej)
     double obliczonaWartSter = m_modelARX.symuluj(aktWartSter);
     m_krokPoprzedni = obliczonaWartSter;
     return obliczonaWartSter;
+}
+
+void ProstyUAR::resetPID()
+{
+    m_regulatorPID.resetujcalke();
+    m_regulatorPID.resetujrozniczke();
+}
+void ProstyUAR::resetSymulacji()
+{
+    m_krokPoprzedni = 0.0;
+    m_uchybPoprzedni = 0.0;
+    m_WartSterPoprzedni = 0.0;
+    m_regulatorPID.resetujcalke();
+    m_regulatorPID.resetujrozniczke();
+    m_modelARX.resetARX();
+}
+
+void ProstyUAR::setOdchylenie(double odchylenie)
+{
+    // Komenda do ModelARX: ustawienie tylko odchylenia dla Testów 9 i 10
+    m_modelARX.setOdchylenie(odchylenie);
+}
+
+void ProstyUAR::setLimity(double minU, double maxU, double minY, double maxY)
+{
+    // Komenda do ModelARX: ustawienie wszystkich 4 limitów
+    m_modelARX.setLimit(minU, maxU, minY, maxY);
 }

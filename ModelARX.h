@@ -36,6 +36,8 @@ public:
 	void setWekB(const std::vector<double>& B);
 	void setOpoznienie(int opoznienie);
 
+	void resetARX();
+
 	bool getCzyLimit();
 	bool getCzyWlasnyLim();
 	double getMinSter();

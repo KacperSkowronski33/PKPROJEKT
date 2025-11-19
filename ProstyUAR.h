@@ -18,6 +18,12 @@ public:
 
 	}
 
+
+	void setOdchylenie(double odchylenie);
+	void setLimity(double minU, double maxU, double minY, double maxY);
+	void resetPID();
+	void resetSymulacji();
+
 	void setPID(double k, double Ti, double Td);
 	void setARX(const std::vector<double>& A, const std::vector<double>& B, int opoznienie, double zaklocenie);
 
