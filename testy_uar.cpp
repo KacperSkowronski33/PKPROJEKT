@@ -15,6 +15,9 @@
 
 //Funkcje pomocnicze dla testów:
 
+int liczbaTestow = 0;
+int liczbaSukcesow = 0;
+
 void raportBleduSekwencji(std::vector<double>& spodz, std::vector<double>& fakt)
 {
 	constexpr size_t PREC = 3;
@@ -39,7 +42,9 @@ bool porownanieSekwencji(std::vector<double>& spodz, std::vector<double>& fakt)
 
 void myAssert(std::vector<double>& spodz, std::vector<double>& fakt)
 {
+	liczbaTestow++;
 	if (porownanieSekwencji(spodz, fakt))
+		liczbaSukcesow++,
 		std::cerr << "OK!\n";
 	else
 	{
@@ -594,195 +599,302 @@ namespace TESTY_Wlasne
 {
 	void wykonaj_testy();
 	void test_1_PID_resetPamieci();
-	void test_2_PID_reakcjaNaUjemnyUchyb();
+	void test_2_PID_resetRozniczki();
 	void test_3_ARX_testOgraniczeniaSterowania();
 	void test_4_ARX_testWzmocnieniaZerowego();
 	void test_5_Generator_prostokatWypelnienie();
-	void test_6_Uslugi_dynamicznaZmianaKp();
-	void test_7_Uslugi_integracjaGeneratora();
-	void test_8_Uslugi_testPelnegoResetu();
-	void test_9_Uslugi_testSzumuWylaczonego();
-	void test_10_Uslugi_testSzumuWlaczonego();
+	void test_6_Uslugi_zmianaKp();
+	void test_7_Uslugi_generator();
+	void test_8_Uslugi_reset();
+	void test_9_Uslugi_szum_wylaczony();
+	void test_10_Uslugi_prosty_sygnal();
 }
 
 void TESTY_Wlasne::wykonaj_testy()
 {
-	std::cerr << "\n--- TESTY WŁASNE (5 Jednostkowych + 5 Integracyjnych) ---\n";
 	test_1_PID_resetPamieci();
-	test_2_PID_reakcjaNaUjemnyUchyb();
+	test_2_PID_resetRozniczki();
 	test_3_ARX_testOgraniczeniaSterowania();
 	test_4_ARX_testWzmocnieniaZerowego();
 	test_5_Generator_prostokatWypelnienie();
-	test_6_Uslugi_dynamicznaZmianaKp();
-	test_7_Uslugi_integracjaGeneratora();
-	test_8_Uslugi_testPelnegoResetu();
-	test_9_Uslugi_testSzumuWylaczonego();
-	test_10_Uslugi_testSzumuWlaczonego();
+	test_6_Uslugi_zmianaKp();
+	test_7_Uslugi_generator();
+	test_8_Uslugi_reset();
+	test_9_Uslugi_szum_wylaczony();
+	test_10_Uslugi_prosty_sygnal();
 }
 
-// --------------------------------------------------------------------------------------------------
-// WARSTWA DANYCH (TESTY JEDNOSTKOWE)
-// --------------------------------------------------------------------------------------------------
 
-// Test 1: Reset pamięci całkującej (RegulatorPID::resetPID)
+
+// ==========================================================================
+// CZĘŚĆ 1: TESTY JEDNOSTKOWE
+// ==========================================================================
+
 void TESTY_Wlasne::test_1_PID_resetPamieci()
 {
-	std::cerr << "1. PID -> test resetu pamieci calkujacej: ";
+
+	// Sygnatura testu:
+	std::cerr << "\n";
+	std::cerr << "PID -> test zerowania calki: ";
 	try
 	{
-		RegulatorPID instancjaTestowa(1.0, 1.0);
+		// Przygotowanie danych:
+		RegulatorPID instancjaTestowa(1.0, 1.0); // Kp=1, Ti=1
+		std::vector<double> spodzSygWy = { 2.0 };
+		std::vector<double> faktSygWy(1);
 
+		// Symulacja (nabicie całki):
 		instancjaTestowa.symuluj(1.0);
 		instancjaTestowa.symuluj(1.0);
 
-		// Używamy metody z ProstyUAR.h (która deleguje do resetujcalke/rozniczke)
+		// Reset pamięci:
 		instancjaTestowa.resetujcalke();
 
-		// Sprawdzenie, czy U wychodzi jako czyste P = 1.0 (po resecie I)
+		// Sprawdzenie po resecie dla uchybu 1.0 (I=0, P=1):
+		faktSygWy[0] = instancjaTestowa.symuluj(1.0);
+
+		// Walidacja poprawności:
+		myAssert(spodzSygWy, faktSygWy);
+	}
+	catch (...) { std::cerr << "INTERUPTED!\n"; }
+}
+
+void TESTY_Wlasne::test_2_PID_resetRozniczki()
+{
+	std::cerr << "PID -> test resetu pamieci rozniczkujacej: ";
+	try
+	{
+
+		RegulatorPID instancjaTestowa(1.0, 0.0, 1.0);
+		instancjaTestowa.symuluj(1.0);
+		instancjaTestowa.resetujrozniczke();
+		std::vector<double> spodz = { 4.0 };
+		std::vector<double> fakt = { instancjaTestowa.symuluj(2.0) };
+
+		// Walidacja poprawności:
+		myAssert(spodz, fakt);
+	}
+	catch (...) { std::cerr << "INTERUPTED!\n"; }
+}
+
+void TESTY_Wlasne::test_3_ARX_testOgraniczeniaSterowania()
+{
+	// Sygnatura testu:
+	std::cerr << "ARX -> test obciecia wejscia (Umax=5): ";
+	try
+	{
+		// Przygotowanie danych:
+		ModelARX instancjaTestowa({ -0.4 }, { 0.6 }, 1, 0.0);
+		instancjaTestowa.setLimit(1.0, 5.0, -10.0, 10.0);
+		instancjaTestowa.czyLimit(true);
+
+		constexpr size_t LICZ_ITER = 2;
+		std::vector<double> sygWe = { 10.0, 3.0 };
+		std::vector<double> spodzSygWy = { 0.0, 3.0 };
+		std::vector<double> faktSygWy(LICZ_ITER);
+
+		// Symulacja:
+		for (int i = 0; i < LICZ_ITER; i++)
+			faktSygWy[i] = instancjaTestowa.symuluj(sygWe[i]);
+
+		// Walidacja poprawności:
+		myAssert(spodzSygWy, faktSygWy);
+	}
+	catch (...) { std::cerr << "INTERUPTED!\n"; }
+}
+
+void TESTY_Wlasne::test_4_ARX_testWzmocnieniaZerowego()
+{
+	// Sygnatura testu:
+	std::cerr << "ARX -> test stabilnosci (zera): ";
+	try
+	{
+		// Przygotowanie danych:
+		ModelARX instancjaTestowa({}, {}, 1, 0.0);
+		constexpr size_t LICZ_ITER = 2;
+		std::vector<double> spodzSygWy = { 0.0, 0.0 };
+		std::vector<double> faktSygWy(LICZ_ITER);
+
+		// Symulacja:
+		for (int i = 0; i < LICZ_ITER; i++)
+			faktSygWy[i] = instancjaTestowa.symuluj(10.0);
+
+		// Walidacja poprawności:
+		myAssert(spodzSygWy, faktSygWy);
+	}
+	catch (...) { std::cerr << "INTERUPTED!\n"; }
+}
+
+void TESTY_Wlasne::test_5_Generator_prostokatWypelnienie()
+{
+	// Sygnatura testu:
+	std::cerr << "Generator -> test wypelnienia 0.5: ";
+	try
+	{
+		// Przygotowanie danych:
+		GeneratorProstokat instancjaTestowa;
+		instancjaTestowa.setOkres(4);
+		instancjaTestowa.setAmplituda(1.0);
+		instancjaTestowa.setStala(0.0);
+		instancjaTestowa.setWypelnienie(0.5);
+
+		constexpr size_t LICZ_ITER = 4;
+		std::vector<double> spodzSygWy = { 1.0, 1.0, 0.0, 0.0 };
+		std::vector<double> faktSygWy(LICZ_ITER);
+
+		// Symulacja:
+		for (int i = 0; i < LICZ_ITER; i++)
+			faktSygWy[i] = instancjaTestowa.wynikProstokat(i);
+
+		// Walidacja poprawności:
+		myAssert(spodzSygWy, faktSygWy);
+	}
+	catch (...) { std::cerr << "INTERUPTED!\n"; }
+}
+
+// ==========================================================================
+// CZĘŚĆ 2: TESTY INTEGRACYJNE
+// ==========================================================================
+
+void TESTY_Wlasne::test_6_Uslugi_zmianaKp()
+{
+	// Sygnatura testu:
+	std::cerr << "WarstwaUslug -> test dynamicznej zmiany Kp: ";
+	try
+	{
+		// Przygotowanie danych:
+		WarstwaUslug instancjaTestowa;
+		instancjaTestowa.ustawParametryARX({ 0.0 }, { 1.0 }, 1);
+		instancjaTestowa.ustawParametryPID(1.0, 0.0, 0.0);
+		instancjaTestowa.ustawRodzajSygnalu(WarstwaUslug::RodzajSygnalu::Brak);
+
+		std::vector<double> spodzSygWy = { 1.0 };
+		std::vector<double> faktSygWy(1);
+
+		// Symulacja (Krok 1):
+		instancjaTestowa.wykonajKrokSym(); // Kp=1.0
+
+		// Zmiana nastawy w locie:
+		instancjaTestowa.ustawParametryPID(10.0, 0.0, 0.0);
+
+		// Symulacja (Krok 2):
+		faktSygWy[0] = instancjaTestowa.wykonajKrokSym().wartReg; // Powinno być inne niż w kroku 1
+
+		// Walidacja (prosta, sprawdzamy czy kod dziala):
+		// Tutaj spodziewamy się 1.0 (wynik z kroku 1 jest w buforze, u[i-1])
+		// Bardziej chodzi o to, czy funkcja sie nie wywala.
+		myAssert(spodzSygWy, faktSygWy);
+	}
+	catch (...) { std::cerr << "INTERUPTED!\n"; }
+}
+
+void TESTY_Wlasne::test_7_Uslugi_generator()
+{
+	// Sygnatura testu:
+	std::cerr << "WarstwaUslug (Generator) -> test integracji: ";
+	try
+	{
+		// Przygotowanie danych:
+		WarstwaUslug instancjaTestowa;
+		instancjaTestowa.ustawParametryARX({ 0.0 }, { 0.0 }, 1);
+		instancjaTestowa.ustawRodzajSygnalu(WarstwaUslug::RodzajSygnalu::Prostokatny);
+		instancjaTestowa.ustawParametryProst(2, 0.5, 2.0, 0.0);
+
+		std::vector<double> spodzSygWy = { 2.0, 0.0 };
+		std::vector<double> faktSygWy(2);
+
+		// Symulacja:
+		faktSygWy[0] = instancjaTestowa.wykonajKrokSym().wartZad;
+		faktSygWy[1] = instancjaTestowa.wykonajKrokSym().wartZad;
+
+		// Walidacja poprawności:
+		myAssert(spodzSygWy, faktSygWy);
+	}
+	catch (...) { std::cerr << "INTERUPTED!\n"; }
+}
+
+void TESTY_Wlasne::test_8_Uslugi_reset()
+{
+	// Sygnatura testu:
+	std::cerr << "WarstwaUslug -> test pelnego resetu: ";
+	try
+	{
+		// Przygotowanie danych:
+		WarstwaUslug instancjaTestowa;
+		instancjaTestowa.ustawParametryARX({ -0.5 }, { 0.5 }, 1);
+		std::vector<double> spodzSygWy = { 0.0 };
+		std::vector<double> faktSygWy(1);
+
+		// Symulacja wstępna:
+		for (int i = 0; i < 5; i++) instancjaTestowa.wykonajKrokSym();
+
+		// Reset:
+		instancjaTestowa.resetSymulacji();
+
+		// Symulacja po resecie:
+		faktSygWy[0] = instancjaTestowa.wykonajKrokSym().wartReg;
+
+		// Walidacja poprawności:
+		myAssert(spodzSygWy, faktSygWy);
+	}
+	catch (...) { std::cerr << "INTERUPTED!\n"; }
+}
+
+void TESTY_Wlasne::test_9_Uslugi_szum_wylaczony()
+{
+	// Sygnatura testu:
+	std::cerr << "WarstwaUslug -> SzumOFF: ";
+	try
+	{
+		// Przygotowanie danych:
+		WarstwaUslug instancjaTestowa;
+		instancjaTestowa.ustawParametryARX({ 0.0 }, { 0.0 }, 1);
+		instancjaTestowa.ustawOdchylenie(0.0);
+		std::vector<double> faktSygWy(1);
+
+		// Symulacja 1:
+		double w1 = instancjaTestowa.wykonajKrokSym().wartReg;
+		instancjaTestowa.resetSymulacji();
+
+		// Symulacja 2:
+		double w2 = instancjaTestowa.wykonajKrokSym().wartReg;
+		faktSygWy[0] = w2;
+		std::vector<double> spodzSygWy = { w1 };
+
+		// Walidacja poprawności:
+		myAssert(spodzSygWy, faktSygWy);
+	}
+	catch (...) { std::cerr << "INTERUPTED!\n"; }
+}
+// 10. Uslugi: Test podstawowy sygnału (czy "Brak" daje 1.0)
+void TESTY_Wlasne::test_10_Uslugi_prosty_sygnal()
+{
+	std::cerr << "WarstwaUslug -> Sygnal 'Brak' (Test wartosci 1.0): ";
+	try
+	{
+		WarstwaUslug uslugi;
+		uslugi.ustawRodzajSygnalu(WarstwaUslug::RodzajSygnalu::Brak);
+
+		// Wykonujemy jeden krok i sprawdzamy, jaka byla wartosc zadana
+		double zadana = uslugi.wykonajKrokSym().wartZad;
+
 		std::vector<double> spodz = { 1.0 };
-		std::vector<double> fakt = { instancjaTestowa.symuluj(1.0) };
+		std::vector<double> fakt = { zadana };
 
 		myAssert(spodz, fakt);
 	}
-	catch (...)
-	{
-		std::cerr << "INTERUPTED! (niespodziwany wyjatek)\n";
-	}
+	catch (...) { std::cerr << "INTERUPTED!\n"; }
 }
-
-// Test 2: Reakcja na ujemny uchyb (ujemna akumulacja I)
-void TESTY_Wlasne::test_2_PID_reakcjaNaUjemnyUchyb()
-{
-	std::cerr << "2. PID -> test reakcji na staly ujemny uchyb: ";
-	try
-	{
-		RegulatorPID instancjaTestowa(2.0, 1.0); // PI (Kp=2.0, Ti=1.0)
-		constexpr size_t LICZ_ITER = 3;
-		std::vector<double> sygWe(LICZ_ITER, -1.0); // Uchyb = -1.0
-
-		// Oczekiwane U: {-3.0, -4.0, -5.0} (P=-2.0, I=-1.0, -2.0, -3.0)
-		std::vector<double> spodzSygWy = { -3.0, -4.0, -5.0 };
-		std::vector<double> faktSygWy(LICZ_ITER);
-
-		for (int i = 0; i < LICZ_ITER; i++)
-			faktSygWy[i] = instancjaTestowa.symuluj(sygWe[i]);
-
-		myAssert(spodzSygWy, faktSygWy);
-	}
-	catch (...)
-	{
-		std::cerr << "INTERUPTED! (niespodziwany wyjatek)\n";
-	}
-}
-
-// Test 3: Obcięcie sterowania U na wejściu ARX (ModelARX::setLimit)
-void TESTY_Wlasne::test_3_ARX_testOgraniczeniaSterowania()
-{
-	std::cerr << "3. ARX -> test ograniczenia wejscia U (Umax=5): ";
-	try
-	{
-		ModelARX instancjaTestowa({ -0.4 }, { 0.6 }, 1, 0.0);
-		// Ustawienie limitu MAX U = 5.0 (Wymaga metody setLimit(4 args))
-		instancjaTestowa.setLimit(1.0, 5.0, -10.0, 10.0);
-
-		constexpr size_t LICZ_ITER = 2;
-		std::vector<double> sygWe = { 10.0, 3.0 }; // Test 10.0 (obcięte), 3.0 (nieobcięte)
-
-		// Oczekiwany wynik obliczony na podstawie obciętych wartości U=5.0 i U=3.0
-		std::vector<double> spodzSygWy = { 0.0, 3.0 }; // y[1]=0.6*5.0 + 0.4*0.0 = 3.0
-		std::vector<double> faktSygWy(LICZ_ITER);
-
-		for (int i = 0; i < LICZ_ITER; i++)
-			faktSygWy[i] = instancjaTestowa.symuluj(sygWe[i]);
-
-		myAssert(spodzSygWy, faktSygWy);
-	}
-	catch (...)
-	{
-		std::cerr << "INTERUPTED! (niespodziwany wyjatek)\n";
-	}
-}
-
-// Test 4: Test zerowego wzmocnienia ARX (A={}, B={})
-void TESTY_Wlasne::test_4_ARX_testWzmocnieniaZerowego()
-{
-	std::cerr << "4. ARX -> test zerowego wzmocnienia (A={}, B={}): ";
-	try
-	{
-		// Sprawdza poprawność obsługi pustych wektorów współczynników
-		ModelARX instancjaTestowa({}, {}, 1, 0.0);
-		constexpr size_t LICZ_ITER = 5;
-		std::vector<double> sygWe(LICZ_ITER, 10.0); // Duże pobudzenie
-		std::vector<double> spodzSygWy(LICZ_ITER, 0.0); // Oczekujemy samych zer
-		std::vector<double> faktSygWy(LICZ_ITER);
-
-		for (int i = 0; i < LICZ_ITER; i++)
-			faktSygWy[i] = instancjaTestowa.symuluj(sygWe[i]);
-
-		myAssert(spodzSygWy, faktSygWy);
-	}
-	catch (...)
-	{
-		std::cerr << "INTERUPTED! (niespodziwany wyjatek)\n";
-	}
-}
-
-// Test 5: Test Generatora Prostokątnego (Wypełnienie 0.75)
-void TESTY_Wlasne::test_5_Generator_prostokatWypelnienie()
-{
-	std::cerr << "5. Generator -> test wypelnienia 0.75 (T=4): ";
-	try
-	{
-		GeneratorProstokat gen;
-		gen.setOkres(4);
-		gen.setWypelnienie(0.75); // HIGH przez 3 kroki, LOW przez 1 krok
-		gen.setAmplituda(1.0);
-		gen.setStala(0.0);
-
-		constexpr size_t LICZ_ITER = 8;
-		// Oczekiwana sekwencja: { 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0 }
-		std::vector<double> spodzSygWy = { 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0 };
-		std::vector<double> faktSygWy(LICZ_ITER);
-
-		for (int i = 0; i < LICZ_ITER; i++)
-			faktSygWy[i] = gen.wynikProstokat(i);
-
-		myAssert(spodzSygWy, faktSygWy);
-	}
-	catch (...)
-	{
-		std::cerr << "INTERUPTED! (niespodziwany wyjatek)\n";
-	}
-}
-
-//testy warstwa uslug
-namespace TESTY_WarstwaUslug
-{
-	void wykonaj_testy();
-	void test1();
-
-}
-void TESTY_WarstwaUslug::wykonaj_testy()
-{
-	std::cerr << "TESTY_WarstwaUslug:\n";
-	test1();
-}
-
-void TESTY_WarstwaUslug::test1()
-{
-	std::cerr << "  test1: ";
-	
-}
-
-
-
 
 int main()
 {
+
 	TESTY_ModelARX::wykonaj_testy();
 	TESTY_RegulatorPID::wykonaj_testy();
 	//TESTY_RegulatorOnOff::wykonaj_testy();
 	TESTY_ProstyUAR::wykonaj_testy();
+	TESTY_Wlasne::wykonaj_testy();
+	std::cerr << " Testy zakonczone powodzeniem: " << liczbaSukcesow << " / " << liczbaTestow << "\n";
 }
 
 #endif

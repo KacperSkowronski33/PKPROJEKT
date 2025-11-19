@@ -80,3 +80,10 @@ void ProstyUAR::setLimity(double minU, double maxU, double minY, double maxY)
     // Komenda do ModelARX: ustawienie wszystkich 4 limitów
     m_modelARX.setLimit(minU, maxU, minY, maxY);
 }
+ProstyUAR::ProstyUAR()
+    : m_modelARX({ 0.0 }, { 0.0 }, 1, 0.0), // Inicjalizacja ModelARX zerami
+    m_regulatorPID(0.0, 0.0, 0.0),    // Inicjalizacja RegulatorPID zerami
+    m_krokPoprzedni(0.0),
+    m_uchybPoprzedni(0.0),
+    m_WartSterPoprzedni(0.0) {
+}

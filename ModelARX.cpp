@@ -5,7 +5,8 @@ void ModelARX::setLimit(double minSter, double maxSter, double minReg, double ma
 	m_minSter = minSter;
 	m_maxSter = maxSter;
 	m_minReg = minReg;
-	m_maxSter = maxReg;
+	m_maxReg = maxReg;
+	m_czyWlasnyLimit = true;
 }
 
 void ModelARX::czyLimit(bool czyLimit)
@@ -103,7 +104,12 @@ double ModelARX::symuluj(double aktualnaWartSter)
 	}
 
 	if (getCzyLimit()) {
-		wartReg = setLimitWart(wartReg);
+		double maxY = getCzyWlasnyLim() ? getMaxReg() : 10.0;
+		double minY = getCzyWlasnyLim() ? getMinReg() : -10.0;
+
+		if (wartReg > maxY) wartReg = maxY;
+		else if (wartReg < minY) wartReg = minY;
+		//wartReg = setLimitWart(wartReg);
 	}
 
 	m_kolejkaWyj.push_front(wartReg);

@@ -13,6 +13,7 @@ private:
 	double m_uchybPoprzedni; //pola potrzebne do wykresów
 	double m_WartSterPoprzedni;
 public:
+	ProstyUAR();
 	ProstyUAR(ModelARX modelARX, RegulatorPID regulatorPID) : m_modelARX(modelARX), m_regulatorPID(regulatorPID), m_krokPoprzedni(0.0)
 	{
 
