@@ -52,12 +52,20 @@ qrc_*.cpp
 Makefile*
 *build-*
 
-# --- CMake 
-CMakeCache.txt
-CMakeFiles/
-cmake_install.cmake
-*.cmake
-!CMakeLists.txt
+# QMake garbage
+Makefile*
+*.qmake.stash
+*.pro.user
+*.pro.user.*
+object_script.*
+ui_*.h
+moc_*.cpp
+qrc_*.cpp
+.qmlc
+.jsc
+build/
+debug/
+release/
 
 # --- Foldery budowania 
 build/

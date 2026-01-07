@@ -3,10 +3,9 @@
 
 #ifdef MAIN
 
-
-int main()
+int run_test()
 {
-	//Twój program
+	// Twï¿½j program
 }
 
 #endif
