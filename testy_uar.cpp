@@ -599,6 +599,7 @@ namespace TESTY_Wlasne
 {
 	void wykonaj_testy();
 	void test_1_PID_resetPamieci();
+<<<<<<< Updated upstream
 	void test_2_PID_resetRozniczki();
 	void test_3_ARX_testOgraniczeniaSterowania();
 	void test_4_ARX_testWzmocnieniaZerowego();
@@ -608,11 +609,15 @@ namespace TESTY_Wlasne
 	void test_8_Uslugi_reset();
 	void test_9_Uslugi_szum_wylaczony();
 	void test_10_Uslugi_prosty_sygnal();
+=======
+	void test_2_ARX_testOgraniczeniaSterowania();
+>>>>>>> Stashed changes
 }
 
 void TESTY_Wlasne::wykonaj_testy()
 {
 	test_1_PID_resetPamieci();
+<<<<<<< Updated upstream
 	test_2_PID_resetRozniczki();
 	test_3_ARX_testOgraniczeniaSterowania();
 	test_4_ARX_testWzmocnieniaZerowego();
@@ -880,12 +885,59 @@ void TESTY_Wlasne::test_10_Uslugi_prosty_sygnal()
 
 		std::vector<double> spodz = { 1.0 };
 		std::vector<double> fakt = { zadana };
+=======
+	test_2_ARX_testOgraniczeniaSterowania();
+}
+
+void TESTY_Wlasne::test_1_PID_resetPamieci()
+{
+	std::cerr << "PID -> test resetu pamieci calkujacej: ";
+	try
+	{
+		RegulatorPID test(1.0, 1.0);
+
+		test.symuluj(1.0);
+		test.symuluj(1.0);
+
+		test.resetujcalke(); //sumauchyb=0
+
+		std::vector<double> spodz = { 1.0 };
+		std::vector<double> fakt = { test.symuluj(1.0) };
+>>>>>>> Stashed changes
 
 		myAssert(spodz, fakt);
 	}
 	catch (...) { std::cerr << "INTERUPTED!\n"; }
 }
 
+<<<<<<< Updated upstream
+=======
+void TESTY_Wlasne::test_2_ARX_testOgraniczeniaSterowania()
+{
+	std::cerr << "ARX -> test ograniczenia wejscia U (Umax=5): ";
+	try
+	{
+		ModelARX test({ -0.4 }, { 0.6 }, 1, 0.0);
+		//Ustawienie limitu max U = 5.0
+		test.setLimit(1.0, 5.0, -10.0, 10.0);
+
+		constexpr size_t LICZ_ITER = 2;
+		std::vector<double> sygWe = { 10.0, 3.0 };
+
+		std::vector<double> spodzSygWy = { 0.0, 3.0 };
+		std::vector<double> faktSygWy(LICZ_ITER);
+
+		for (int i = 0; i < LICZ_ITER; i++)
+			faktSygWy[i] = test.symuluj(sygWe[i]);
+
+		myAssert(spodzSygWy, faktSygWy);
+	}
+	catch (...)
+	{
+		std::cerr << "INTERUPTED! (niespodziwany wyjatek)\n";
+	}
+}
+>>>>>>> Stashed changes
 int main()
 {
 
