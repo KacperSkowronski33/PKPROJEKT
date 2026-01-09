@@ -2,6 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QTimer>
+#include <QtCharts>
+#include "WarstwaUslug.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -17,7 +20,12 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+    //void aktSym();
+
 private:
     Ui::MainWindow *ui;
+    WarstwaUslug m_warstwaUslugowa;
+    QTimer *m_timer;
 };
 #endif // MAINWINDOW_H

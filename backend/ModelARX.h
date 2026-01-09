@@ -22,7 +22,7 @@ private:
 	std::normal_distribution<double> m_rozkladNormalny;
 	double m_odchStd;
 public:
-	ModelARX(const std::vector<double>& wektorA, const std::vector<double>& wektorB, int opoznienie = 1, double zaklocenie = 0.0) : m_wspWektorA(wektorA), m_wspWektorB(wektorB), m_opoznienie(opoznienie), m_zaklocenie(zaklocenie) {
+    ModelARX(const std::vector<double>& wektorA, const std::vector<double>& wektorB, int opoznienie = 1, double zaklocenie = 0.0) : m_wspWektorA(wektorA), m_wspWektorB(wektorB), m_opoznienie(opoznienie), m_zaklocenie(zaklocenie), m_czyLimit(false), m_czyWlasnyLimit(false) {
 		m_kolejkaWej = std::deque<double>(wektorB.size(), 0.0);
 		m_kolejkaWyj = std::deque<double>(wektorA.size(), 0.0);
 		m_buforOpoznienia = std::deque<double>(opoznienie, 0.0);

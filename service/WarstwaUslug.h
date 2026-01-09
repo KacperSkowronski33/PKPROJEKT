@@ -29,6 +29,5 @@ private:
 	GeneratorProstokat m_sygPro; //do generowania prostokata
 	int m_krokSym;				 //krok symulacji
 
-	const char* m_nazwaPliku;
 };
 

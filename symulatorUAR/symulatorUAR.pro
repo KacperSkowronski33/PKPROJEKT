@@ -13,6 +13,7 @@ INCLUDEPATH += \
     $$PWD/../tests
 
 SOURCES += \
+    ../ui/arx_set_param.cpp \
     main.cpp \
     ../ui/mainwindow.cpp \
     ../service/WarstwaUslug.cpp \
@@ -29,10 +30,12 @@ HEADERS += \
     ../backend/ModelARX.h \
     ../backend/RegulatorPID.h \
     ../backend/ProstyUAR.h \
-    ../backend/GeneratorWartosci.h
+    ../backend/GeneratorWartosci.h \
+    ../ui/arx_set_param.h
 
 FORMS += \
-    ../ui/mainwindow.ui
+    ../ui/mainwindow.ui \
+    ../ui/arx_set_param.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
