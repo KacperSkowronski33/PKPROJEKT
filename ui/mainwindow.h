@@ -50,8 +50,20 @@ private:
     QValueAxis *m_Y_wykres_2;
 
     //wykres 3
+    void generujWykres_ster();
+    void skalowanieY_ster();
+    QLineSeries *m_wykres_ster;
+    QValueAxis *m_X_wykres_3;
+    QValueAxis *m_Y_wykres_3;
 
     //wykres 4
+    void generujWykres_PID();
+    void skalowanieY_PID();
+    QLineSeries *m_wykres_P;
+    QLineSeries *m_wykres_I;
+    QLineSeries *m_wykres_D;
+    QValueAxis *m_X_wykres_4;
+    QValueAxis *m_Y_wykres_4;
 
 };
 #endif // MAINWINDOW_H

@@ -14,8 +14,9 @@ MainWindow::MainWindow(QWidget *parent)
     //wykres 2
     generujWykres_uchyb();
     //wykres 3
-
+    generujWykres_ster();
     //wykres 4
+    generujWykres_PID();
 }
 
 MainWindow::~MainWindow()
@@ -32,6 +33,11 @@ void MainWindow::aktSym()
     m_wykres_Reg->append(m_czasSym, dane_wykres.wartReg);
 
     m_wykres_uchyb->append(m_czasSym, dane_wykres.uchyb);
+    m_wykres_ster->append(m_czasSym, dane_wykres.sterowanie);
+
+    m_wykres_P->append(m_czasSym, dane_wykres.p);
+    m_wykres_I->append(m_czasSym, dane_wykres.i);
+    m_wykres_D->append(m_czasSym, dane_wykres.d);
 
     m_czasSym += (ui->param_interwal->value() /1000.0);
 
@@ -39,16 +45,24 @@ void MainWindow::aktSym()
     if(m_czasSym > czasPrzesunieciaOsi) {
         m_X_wykres_1->setRange(m_czasSym - czasPrzesunieciaOsi, m_czasSym);
         m_X_wykres_2->setRange(m_czasSym - czasPrzesunieciaOsi, m_czasSym);
+        m_X_wykres_3->setRange(m_czasSym - czasPrzesunieciaOsi, m_czasSym);
+        m_X_wykres_4->setRange(m_czasSym - czasPrzesunieciaOsi, m_czasSym);
     }
     int liczbaProbek = static_cast<int>(czasPrzesunieciaOsi) * 5;
     if(m_wykres_Reg->count() > liczbaProbek) {
         m_wykres_Reg->remove(0);
         m_wykres_Zad->remove(0);
         m_wykres_uchyb->remove(0);
+        m_wykres_ster->remove(0);
+        m_wykres_P->remove(0);
+        m_wykres_I->remove(0);
+        m_wykres_D->remove(0);
     }
 
     skalowanieY_ZadReg();
     skalowanieY_uchyb();
+    skalowanieY_ster();
+    skalowanieY_PID();
 }
 
 void MainWindow::generujWykres_ZadReg()
@@ -132,6 +146,98 @@ void MainWindow::skalowanieY_uchyb()
 
     double margines = (maxY - minY) * 0.1;
     m_Y_wykres_2->setRange(minY - margines, maxY + margines); //margines +10%
+}
+
+void MainWindow::generujWykres_ster()
+{
+    m_wykres_ster = new QLineSeries();
+    QChart *wykres_ster = new QChart();
+    wykres_ster->addSeries(m_wykres_ster);
+
+    m_X_wykres_3 = new QValueAxis();
+    m_Y_wykres_3 = new QValueAxis();
+    m_X_wykres_3->setRange(0, 10);
+
+    wykres_ster->addAxis(m_X_wykres_3, Qt::AlignBottom);
+    wykres_ster->addAxis(m_Y_wykres_3, Qt::AlignLeft);
+    m_wykres_ster->attachAxis(m_X_wykres_3);
+    m_wykres_ster->attachAxis(m_Y_wykres_3);
+
+    wykres_ster->layout()->setContentsMargins(0,0,0,0);
+    wykres_ster->setMargins(QMargins(0,0,0,0));
+    wykres_ster->setBackgroundRoundness(5);
+
+    ui->wykres_ster->setChart(wykres_ster);
+}
+
+void MainWindow::skalowanieY_ster()
+{
+    double minY = 1.0, maxY = -1.0;
+    QList<QPointF> pZad = m_wykres_ster->points();
+    for(QPointF &p : pZad) {
+        if(p.y() < minY) minY = p.y();
+        if(p.y() > maxY) maxY = p.y();
+    }
+    if(maxY - minY < 0.001) {maxY += 1.0; minY -= 1.0;}
+
+    double margines = (maxY - minY) * 0.1;
+    m_Y_wykres_3->setRange(minY - margines, maxY + margines); //margines +10%
+}
+
+void MainWindow::generujWykres_PID()
+{
+    m_wykres_P = new QLineSeries();
+    m_wykres_P->setName("P");
+    m_wykres_I = new QLineSeries();
+    m_wykres_I->setName("I");
+    m_wykres_D = new QLineSeries();
+    m_wykres_D->setName("D");
+    QChart *wykres_PID = new QChart();
+    wykres_PID->addSeries(m_wykres_P);
+    wykres_PID->addSeries(m_wykres_I);
+    wykres_PID->addSeries(m_wykres_D);
+
+    m_X_wykres_4 = new QValueAxis();
+    m_Y_wykres_4 = new QValueAxis();
+    m_X_wykres_4->setRange(0, 10);
+
+   wykres_PID->addAxis(m_X_wykres_4, Qt::AlignBottom);
+   wykres_PID->addAxis(m_Y_wykres_4, Qt::AlignLeft);
+    m_wykres_P->attachAxis(m_X_wykres_4);
+    m_wykres_P->attachAxis(m_Y_wykres_4);
+    m_wykres_I->attachAxis(m_X_wykres_4);
+    m_wykres_I->attachAxis(m_Y_wykres_4);
+    m_wykres_D->attachAxis(m_X_wykres_4);
+    m_wykres_D->attachAxis(m_Y_wykres_4);
+
+    wykres_PID->layout()->setContentsMargins(0,0,0,0);
+    wykres_PID->setMargins(QMargins(0,0,0,0));
+    wykres_PID->setBackgroundRoundness(5);
+
+    ui->wykres_skladowePID->setChart(wykres_PID);
+}
+
+void MainWindow::skalowanieY_PID()
+{
+    double minY = 1.0, maxY = -1.0;
+    QList<QPointF> pP = m_wykres_P->points();
+    QList<QPointF> pI = m_wykres_I->points();
+    QList<QPointF> pD = m_wykres_D->points();
+    for(QPointF &p : pP) {
+        if(p.y() < minY) minY = p.y();
+        if(p.y() > maxY) maxY = p.y();
+    }
+    for(QPointF &p : pI) {
+        if(p.y() < minY) minY = p.y();
+        if(p.y() > maxY) maxY = p.y();
+    }
+    for(QPointF &p : pD) {
+        if(p.y() < minY) minY = p.y();
+        if(p.y() > maxY) maxY = p.y();
+    }
+    if(maxY - minY < 0.001) {maxY += 1.0; minY -= 1.0;}
+    double margines = (maxY - minY) * 0.1;
+    m_Y_wykres_4->setRange(minY - margines, maxY + margines);
 }
 
 void MainWindow::on_start_button_clicked()
