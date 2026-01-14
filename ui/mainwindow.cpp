@@ -71,8 +71,6 @@ void MainWindow::ZapiszDoPliku(){
     QFile plik(sciezka);
     plik.open(QFile::ReadWrite);
     plik.write(doc.toJson());
-
-
 }
 
 void MainWindow::WczytajZPliku(){
