@@ -1,7 +1,5 @@
 #include "WarstwaUslug.h"
 #include "GeneratorWartosci.h"
-#include "ModelARX.h"
-#include "RegulatorPID.h"
 
 WarstwaUslug::Wykres WarstwaUslug::wykonajKrokSym()
 {
