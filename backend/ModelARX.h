@@ -14,7 +14,7 @@ private:
 	double m_minSter, m_maxSter;
 	double m_minReg, m_maxReg;
 	int m_opoznienie;
-	double m_zaklocenie;
+    double m_zaklocenie;
 	bool m_czyLimit;
 	bool m_czyWlasnyLimit;
 

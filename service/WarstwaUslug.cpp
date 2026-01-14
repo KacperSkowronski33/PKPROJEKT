@@ -87,7 +87,10 @@ void WarstwaUslug::ustawRodzajSygnalu(RodzajSygnalu rodzaj)
 }
 
 WarstwaUslug::WarstwaUslug()
-	: m_uar(), // Wywo³uje nowy konstruktor domyœlny ProstyUAR
+	: m_uar(), // Wywoï¿½uje nowy konstruktor domyï¿½lny ProstyUAR
 	m_rodzajSyg(RodzajSygnalu::Brak),
 	m_krokSym(0) {
+}
+void WarstwaUslug::ustawTrybCalkowania(bool czyPrzedSuma) {
+    m_uar.ustawTryb(czyPrzedSuma);
 }

@@ -19,9 +19,11 @@ public:
 	void ustawRodzajSygnalu(RodzajSygnalu rodzaj);
 	void ustawParametrySin(int okres, double amplituda, double skladowaStala);
 	void ustawParametryProst(int okres, double wypelnienie, double amplituda, double skladowaStala);
+    void ustawTrybCalkowania(bool czyPrzedSuma);
 
 
 	void resetSymulacji();
+
 private:
 	ProstyUAR m_uar;
 	RodzajSygnalu m_rodzajSyg;

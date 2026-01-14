@@ -12,6 +12,7 @@ private:
 	RegulatorPID m_regulatorPID;
 	double m_uchybPoprzedni; //pola potrzebne do wykresów
 	double m_WartSterPoprzedni;
+    bool m_czyPrzedSuma = true;
 public:
 	ProstyUAR();
 	ProstyUAR(ModelARX modelARX, RegulatorPID regulatorPID) : m_modelARX(modelARX), m_regulatorPID(regulatorPID), m_krokPoprzedni(0.0)
@@ -23,6 +24,7 @@ public:
 	void setOdchylenie(double odchylenie);
 	void setLimity(double minU, double maxU, double minY, double maxY);
 	void resetPID();
+    void resetARX();
 	void resetSymulacji();
 
 	void setPID(double k, double Ti, double Td);
@@ -35,6 +37,8 @@ public:
 	double getP() const;
 	double getI() const;
 	double getD() const;
+
+    void ustawTryb(bool czyPrzedSuma);
 
 	double symuluj(double sygWej);
 

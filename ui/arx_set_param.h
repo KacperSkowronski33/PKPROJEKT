@@ -14,9 +14,18 @@ class arx_set_param : public QDialog
 public:
     explicit arx_set_param(QWidget *parent = nullptr);
     ~arx_set_param();
+    void resetui();
+signals:
+    void daneZatwierdzone(std::vector<double> A, std::vector<double> B, int opoznienie, double odchylenie);
+
+private slots:
+    void on_zatwierdz_button_clicked();
+    void on_anuluj_button_clicked();
 
 private:
     Ui::arx_set_param *ui;
+
+
 };
 
-#endif // ARX_SET_PARAM_H
+#endif

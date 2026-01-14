@@ -58,6 +58,8 @@ double GeneratorProstokat::wynikProstokat(int krok)
 
 double GeneratorSinusoida::wynikSin(int krok)
 {
+    int T = getOkres();
+    if (T <= 0) return getStala();
 	double wynik = 0.0;
 	double mod = ((krok % getOkres()) / static_cast<double>(getOkres())) * 2 * M_PI;
 	wynik = getAmplituda() * sin(mod) + getStala();

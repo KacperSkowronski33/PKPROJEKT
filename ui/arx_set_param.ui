@@ -224,6 +224,9 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="minimum">
+    <double>-99.989999999999995</double>
+   </property>
   </widget>
   <widget class="QDoubleSpinBox" name="a2_param">
    <property name="geometry">
@@ -233,6 +236,9 @@
      <width>141</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="minimum">
+    <double>-99.989999999999995</double>
    </property>
   </widget>
   <widget class="QDoubleSpinBox" name="a3_param">
@@ -244,6 +250,9 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="minimum">
+    <double>-99.989999999999995</double>
+   </property>
   </widget>
   <widget class="QDoubleSpinBox" name="b3_param">
    <property name="geometry">
@@ -253,6 +262,9 @@
      <width>141</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="minimum">
+    <double>-99.989999999999995</double>
    </property>
   </widget>
   <widget class="QDoubleSpinBox" name="b2_param">
@@ -264,6 +276,9 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="minimum">
+    <double>-99.989999999999995</double>
+   </property>
   </widget>
   <widget class="QDoubleSpinBox" name="b1_param">
    <property name="geometry">
@@ -273,6 +288,9 @@
      <width>141</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="minimum">
+    <double>-99.989999999999995</double>
    </property>
   </widget>
   <widget class="QLabel" name="label_10">
@@ -325,6 +343,9 @@
      <width>201</width>
      <height>25</height>
     </rect>
+   </property>
+   <property name="minimum">
+    <number>1</number>
    </property>
   </widget>
   <widget class="QDoubleSpinBox" name="zaklocenia_param">
@@ -409,6 +430,9 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="minimum">
+    <double>-99.989999999999995</double>
+   </property>
   </widget>
   <widget class="QDoubleSpinBox" name="ymin_param">
    <property name="geometry">
@@ -418,6 +442,9 @@
      <width>141</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="minimum">
+    <double>-99.989999999999995</double>
    </property>
   </widget>
   <widget class="QDoubleSpinBox" name="umin_param">
@@ -429,6 +456,9 @@
      <height>31</height>
     </rect>
    </property>
+   <property name="minimum">
+    <double>-99.989999999999995</double>
+   </property>
   </widget>
   <widget class="QDoubleSpinBox" name="ymax_param">
    <property name="geometry">
@@ -438,6 +468,9 @@
      <width>141</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="minimum">
+    <double>-99.989999999999995</double>
    </property>
   </widget>
   <widget class="QLabel" name="label_16">

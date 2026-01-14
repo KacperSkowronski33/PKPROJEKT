@@ -4,7 +4,13 @@
 #include <QMainWindow>
 #include <QTimer>
 #include <QtCharts>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QJsonArray>
+#include <QFileDialog>
+#include <QFile>
 #include "WarstwaUslug.h"
+#include "arx_set_param.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -27,9 +33,12 @@ private slots:
 
     void on_stop_button_clicked();
 
+    void on_paramARX_button_clicked();
+
+    void on_reset_button_clicked();
 private:
     Ui::MainWindow *ui;
-    WarstwaUslug m_warstwaUslugowa;
+    WarstwaUslug m_warstwaUslug;
     QTimer *m_timer;
     int m_interwal;
     double m_czasSym;
@@ -64,6 +73,10 @@ private:
     QLineSeries *m_wykres_D;
     QValueAxis *m_X_wykres_4;
     QValueAxis *m_Y_wykres_4;
+
+    arx_set_param *m_arxWindow;
+
+    void ZapiszDoPliku();
 
 };
 #endif // MAINWINDOW_H

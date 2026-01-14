@@ -18,95 +18,10 @@
     <item row="3" column="0" colspan="5">
      <widget class="QChartView" name="wykres_ster"/>
     </item>
-    <item row="5" column="6">
-     <widget class="QLabel" name="label_6">
+    <item row="5" column="3">
+     <widget class="QLabel" name="label_4">
       <property name="text">
-       <string>AMPLITUDA - A</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item row="7" column="6">
-     <widget class="QDoubleSpinBox" name="param_amplituda"/>
-    </item>
-    <item row="5" column="7" colspan="2">
-     <widget class="QLabel" name="label_8">
-      <property name="text">
-       <string>SKŁADOWA STAŁA</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item row="6" column="0" colspan="11">
-     <widget class="Line" name="line_3">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="5" colspan="6">
-     <widget class="QChartView" name="wykres_uchyb"/>
-    </item>
-    <item row="9" column="1" rowspan="2">
-     <widget class="QDoubleSpinBox" name="param_I">
-      <property name="whatsThis">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;I&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-     </widget>
-    </item>
-    <item row="5" column="1">
-     <widget class="QLabel" name="label">
-      <property name="text">
-       <string>PARAMETRY PID</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item row="7" column="7" colspan="2">
-     <widget class="QDoubleSpinBox" name="param_skladowa"/>
-    </item>
-    <item row="2" column="5" colspan="6">
-     <widget class="QLabel" name="label_10">
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>Składowe PID</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item row="7" column="10">
-     <widget class="QPushButton" name="start_button">
-      <property name="text">
-       <string>START</string>
-      </property>
-     </widget>
-    </item>
-    <item row="5" column="4" colspan="2">
-     <widget class="QLabel" name="label_5">
-      <property name="text">
-       <string>OKRES - T</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item row="5" column="2">
-     <widget class="QLabel" name="label_3">
-      <property name="text">
-       <string>TRYB CAŁKOWANIA</string>
+       <string>TYP SYGNAŁU</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -128,6 +43,49 @@
       </property>
      </widget>
     </item>
+    <item row="6" column="0" colspan="11">
+     <widget class="Line" name="line_3">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="5" colspan="6">
+     <widget class="QChartView" name="wykres_uchyb"/>
+    </item>
+    <item row="3" column="5" colspan="6">
+     <widget class="QChartView" name="wykres_skladowePID"/>
+    </item>
+    <item row="10" column="0" rowspan="2">
+     <widget class="QPushButton" name="reset_roz_button">
+      <property name="text">
+       <string>RESET RÓŻNICZKI</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0" colspan="5">
+     <widget class="QChartView" name="wykres_zad_reg"/>
+    </item>
+    <item row="5" column="1">
+     <widget class="QLabel" name="label">
+      <property name="text">
+       <string>PARAMETRY PID</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="4" colspan="2">
+     <widget class="QSpinBox" name="param_okres">
+      <property name="value">
+       <number>1</number>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="9">
+     <widget class="QDoubleSpinBox" name="param_wypelnienie"/>
+    </item>
     <item row="11" column="4" colspan="3">
      <widget class="QSpinBox" name="param_interwal">
       <property name="minimum">
@@ -141,62 +99,10 @@
       </property>
      </widget>
     </item>
-    <item row="11" column="10">
-     <widget class="QPushButton" name="reset_button">
+    <item row="11" column="8" colspan="2">
+     <widget class="QPushButton" name="paramARX_button">
       <property name="text">
-       <string>RESET</string>
-      </property>
-     </widget>
-    </item>
-    <item row="7" column="9">
-     <widget class="QDoubleSpinBox" name="param_wypelnienie"/>
-    </item>
-    <item row="7" column="3" rowspan="3">
-     <widget class="QRadioButton" name="typ_syg_prostokat_button">
-      <property name="text">
-       <string>PROSTOKĄT</string>
-      </property>
-     </widget>
-    </item>
-    <item row="7" column="0" rowspan="3">
-     <widget class="QPushButton" name="resest_cal_button">
-      <property name="text">
-       <string>RESET CAŁKI</string>
-      </property>
-     </widget>
-    </item>
-    <item row="5" column="3">
-     <widget class="QLabel" name="label_4">
-      <property name="text">
-       <string>TYP SYGNAŁU</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
-    <item row="11" column="1">
-     <widget class="QDoubleSpinBox" name="param_D">
-      <property name="whatsThis">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;D&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="0" colspan="5">
-     <widget class="QChartView" name="wykres_zad_reg"/>
-    </item>
-    <item row="2" column="0" colspan="5">
-     <widget class="QLabel" name="label_9">
-      <property name="font">
-       <font>
-        <pointsize>12</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>Sterowanie</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
+       <string>PARAMETRY ARX</string>
       </property>
      </widget>
     </item>
@@ -215,23 +121,6 @@
       </property>
      </widget>
     </item>
-    <item row="10" column="3" rowspan="2">
-     <widget class="QRadioButton" name="typ_syg_sin_button">
-      <property name="text">
-       <string>SINUS</string>
-      </property>
-     </widget>
-    </item>
-    <item row="7" column="4" colspan="2">
-     <widget class="QSpinBox" name="param_okres"/>
-    </item>
-    <item row="9" column="10" rowspan="2">
-     <widget class="QPushButton" name="stop_button">
-      <property name="text">
-       <string>STOP</string>
-      </property>
-     </widget>
-    </item>
     <item row="7" column="1">
      <widget class="QDoubleSpinBox" name="param_P">
       <property name="whatsThis">
@@ -239,27 +128,41 @@
       </property>
      </widget>
     </item>
-    <item row="3" column="5" colspan="6">
-     <widget class="QChartView" name="wykres_skladowePID"/>
-    </item>
-    <item row="4" column="0" colspan="11">
-     <widget class="Line" name="line">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-     </widget>
-    </item>
-    <item row="7" column="2" rowspan="3">
-     <widget class="QRadioButton" name="tryb_calk_przed_suma_button">
-      <property name="text">
-       <string>PRZED SUMĄ</string>
-      </property>
-     </widget>
-    </item>
     <item row="10" column="5">
      <widget class="QLabel" name="label_2">
       <property name="text">
        <string>INTERWAŁ [ms]</string>
+      </property>
+     </widget>
+    </item>
+    <item row="11" column="1">
+     <widget class="QDoubleSpinBox" name="param_D">
+      <property name="whatsThis">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;D&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="6">
+     <widget class="QDoubleSpinBox" name="param_amplituda"/>
+    </item>
+    <item row="7" column="10">
+     <widget class="QPushButton" name="start_button">
+      <property name="text">
+       <string>START</string>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="10" rowspan="3">
+     <widget class="QPushButton" name="stop_button">
+      <property name="text">
+       <string>STOP</string>
+      </property>
+     </widget>
+    </item>
+    <item row="11" column="10">
+     <widget class="QPushButton" name="reset_button">
+      <property name="text">
+       <string>RESET</string>
       </property>
      </widget>
     </item>
@@ -273,25 +176,156 @@
       </property>
      </widget>
     </item>
-    <item row="10" column="0" rowspan="2">
-     <widget class="QPushButton" name="reset_roz_button">
-      <property name="text">
-       <string>RESET RÓŻNICZKI</string>
+    <item row="4" column="0" colspan="11">
+     <widget class="Line" name="line">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
       </property>
      </widget>
     </item>
-    <item row="10" column="2" rowspan="2">
-     <widget class="QRadioButton" name="tryb_calk_w_sumie_button">
+    <item row="5" column="7" colspan="2">
+     <widget class="QLabel" name="label_8">
       <property name="text">
-       <string>W SUMIE</string>
+       <string>SKŁADOWA STAŁA</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
       </property>
      </widget>
     </item>
-    <item row="11" column="8" colspan="2">
-     <widget class="QPushButton" name="paramARX_button">
-      <property name="text">
-       <string>PARAMETRY ARX</string>
+    <item row="8" column="1" rowspan="3">
+     <widget class="QDoubleSpinBox" name="param_I">
+      <property name="whatsThis">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;I&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
+     </widget>
+    </item>
+    <item row="5" column="6">
+     <widget class="QLabel" name="label_6">
+      <property name="text">
+       <string>AMPLITUDA - A</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="7" colspan="2">
+     <widget class="QDoubleSpinBox" name="param_skladowa"/>
+    </item>
+    <item row="2" column="0" colspan="5">
+     <widget class="QLabel" name="label_9">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Sterowanie</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="4" colspan="2">
+     <widget class="QLabel" name="label_5">
+      <property name="text">
+       <string>OKRES - T</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="0" rowspan="2">
+     <widget class="QPushButton" name="resest_cal_button">
+      <property name="text">
+       <string>RESET CAŁKI</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="5" colspan="6">
+     <widget class="QLabel" name="label_10">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Składowe PID</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="2">
+     <widget class="QLabel" name="label_3">
+      <property name="text">
+       <string>TRYB CAŁKOWANIA</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="10" column="2">
+     <widget class="QFrame" name="frame">
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QFormLayout" name="formLayout_3">
+       <item row="0" column="0">
+        <widget class="QRadioButton" name="tryb_calk_przed_suma_button">
+         <property name="text">
+          <string>PRZED SUMĄ</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QRadioButton" name="tryb_calk_w_sumie_button">
+         <property name="text">
+          <string>W SUMIE</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="10" column="3">
+     <widget class="QFrame" name="frame_2">
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QFormLayout" name="formLayout">
+       <item row="0" column="0">
+        <widget class="QRadioButton" name="typ_syg_prostokat_button">
+         <property name="text">
+          <string>PROSTOKĄT</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QRadioButton" name="typ_syg_sin_button">
+         <property name="text">
+          <string>SINUS</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
     </item>
    </layout>

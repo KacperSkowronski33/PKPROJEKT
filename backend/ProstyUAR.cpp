@@ -59,6 +59,7 @@ void ProstyUAR::resetPID()
     m_regulatorPID.resetujcalke();
     m_regulatorPID.resetujrozniczke();
 }
+
 void ProstyUAR::resetSymulacji()
 {
     m_krokPoprzedni = 0.0;
@@ -71,13 +72,13 @@ void ProstyUAR::resetSymulacji()
 
 void ProstyUAR::setOdchylenie(double odchylenie)
 {
-    // Komenda do ModelARX: ustawienie tylko odchylenia dla Testów 9 i 10
+    // Komenda do ModelARX: ustawienie tylko odchylenia dla Testï¿½w 9 i 10
     m_modelARX.setOdchylenie(odchylenie);
 }
 
 void ProstyUAR::setLimity(double minU, double maxU, double minY, double maxY)
 {
-    // Komenda do ModelARX: ustawienie wszystkich 4 limitów
+    // Komenda do ModelARX: ustawienie wszystkich 4 limitï¿½w
     m_modelARX.setLimit(minU, maxU, minY, maxY);
 }
 ProstyUAR::ProstyUAR()
@@ -86,4 +87,7 @@ ProstyUAR::ProstyUAR()
     m_krokPoprzedni(0.0),
     m_uchybPoprzedni(0.0),
     m_WartSterPoprzedni(0.0) {
+}
+void ProstyUAR::ustawTryb(bool czyPrzedSuma) {
+    m_czyPrzedSuma = czyPrzedSuma;
 }
