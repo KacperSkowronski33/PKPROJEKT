@@ -344,13 +344,13 @@
      <string>Plik</string>
     </property>
     <addaction name="separator"/>
+    <addaction name="actionZapisz_konfiguracj"/>
     <addaction name="actionWczytaj_konfiguracj"/>
-    <addaction name="actionWczytaj_konfiguracj_2"/>
    </widget>
    <addaction name="menuplik"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
-  <action name="actionWczytaj_konfiguracj">
+  <action name="actionZapisz_konfiguracj">
    <property name="text">
     <string>Zapisz konfigurację</string>
    </property>
@@ -358,7 +358,7 @@
     <string>Ctrl+S</string>
    </property>
   </action>
-  <action name="actionWczytaj_konfiguracj_2">
+  <action name="actionWczytaj_konfiguracj">
    <property name="text">
     <string>Wczytaj konfigurację</string>
    </property>

@@ -43,3 +43,30 @@ void arx_set_param::resetui(){
 
 
 }
+int arx_set_param::getopoznienie() {return ui->opoznienie_param->value();}
+double arx_set_param::getzaklocenia(){return ui->zaklocenia_param->value();}
+double arx_set_param::getWektorA1(){return ui->a1_param->value();}
+double arx_set_param::getWektorA2(){return ui->a2_param->value();}
+double arx_set_param::getWektorA3(){return ui->a3_param->value();}
+double arx_set_param::getWektorB1(){return ui->b1_param->value();}
+double arx_set_param::getWektorB2(){return ui->b2_param->value();}
+double arx_set_param::getWektorB3(){return ui->b3_param->value();}
+double arx_set_param::getUmax(){return ui->umax_param->value();}
+double arx_set_param::getUmin(){return ui->umin_param->value();}
+double arx_set_param::getYmax(){return ui->ymax_param->value();}
+double arx_set_param::getYmin(){return ui->ymin_param->value();}
+
+void arx_set_param::setopoznienie(int value){ui->opoznienie_param->setValue(value);}
+void arx_set_param::setzaklocenia(double value){ui->zaklocenia_param->setValue(value);}
+void arx_set_param::setWektorA1(double value){ui->a1_param->setValue(value);}
+void arx_set_param::setWektorA2(double value){ui->a2_param->setValue(value);}
+void arx_set_param::setWektorA3(double value){ui->a3_param->setValue(value);}
+void arx_set_param::setWektorB1(double value){ui->b1_param->setValue(value);}
+void arx_set_param::setWektorB2(double value){ui->b2_param->setValue(value);}
+void arx_set_param::setWektorB3(double value){ui->b3_param->setValue(value);}
+void arx_set_param::setUmin(double value){ui->umin_param->setValue(value);}
+void arx_set_param::setUmax(double value){ui->umax_param->setValue(value);}
+void arx_set_param::setYmin(double value){ui->ymin_param->setValue(value);}
+void arx_set_param::setYmax(double value){ui->ymax_param->setValue(value);}
+
+

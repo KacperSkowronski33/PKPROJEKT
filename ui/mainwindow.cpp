@@ -30,19 +30,112 @@ void MainWindow::ZapiszDoPliku(){
 
     QString sciezka = QFileDialog::getSaveFileName(this,"Zapisz konfigurację","","JSON(*.json)");
 
+    QJsonObject root;
 
     QJsonObject pid;
+    pid["interwal"] = ui->param_interwal->value();
     pid["P"] = ui->param_P->value();
     pid["I"] = ui->param_I->value();
     pid["D"] = ui->param_D->value();
+    pid["tryb"] = ui->tryb_calk_w_sumie_button->isChecked() ? "w sumie":"przed suma";
 
     QJsonObject gen;
     gen["amplituda"] = ui->param_amplituda->value();
-    sadas;
+    gen["okres"] = ui->param_okres->value();
+    gen["skladowa"] = ui->param_skladowa->value();
+    gen["wypelnienie"] = ui->param_wypelnienie->value();
+    pid["typ"] = ui->typ_syg_sin_button->isChecked() ? "sinus":"prostokat";
+
+    QJsonObject arx;
+    arx["zaklocenia"] = m_arxWindow->getzaklocenia();
+    arx["opoznienie"] = m_arxWindow->getopoznienie();
+    arx["a1"] = m_arxWindow->getWektorA1();
+    arx["a2"] = m_arxWindow->getWektorA2();
+    arx["a3"] = m_arxWindow->getWektorA3();
+    arx["b1"] = m_arxWindow->getWektorB1();
+    arx["b2"] = m_arxWindow->getWektorB2();
+    arx["b3"] = m_arxWindow->getWektorB3();
+    arx["Umin"] = m_arxWindow->getUmin();
+    arx["Umax"] = m_arxWindow->getUmax();
+    arx["Ymin"] = m_arxWindow->getYmin();
+    arx["Ymax"] = m_arxWindow->getYmax();
+
+
+    root["parametry_pid"] = pid;
+    root["parametry_generatora"] = gen;
+    root["parametry_arx"] = arx;
+
+    QJsonDocument doc(root);
+    QFile plik(sciezka);
+    plik.open(QFile::ReadWrite);
+     plik.write(doc.toJson());
+
 
 
 
 }
+
+void MainWindow::WczytajZPliku(){
+    QString sciezka = QFileDialog::getOpenFileName(this,"Wczytaj konfiguracje","","JSON (*.json)" );
+    QFile plik(sciezka);
+    plik.open(QIODevice::ReadOnly);
+    QByteArray dane = plik.readAll();
+    QJsonDocument doc = QJsonDocument::fromJson(dane);
+    QJsonObject root = doc.object();
+
+    QJsonObject pid = root["parametry_pid"].toObject();
+    ui->param_P->setValue(pid["P"].toDouble());
+    ui->param_I->setValue(pid["I"].toDouble());
+    ui->param_D->setValue(pid["D"].toDouble());
+    ui->param_interwal->setValue(pid["interwal"].toInt());
+    if(pid["tryb"].toString()=="w sumie"){
+        ui->tryb_calk_w_sumie_button->setChecked(true);
+    }else{
+        ui->tryb_calk_przed_suma_button->setChecked(true);
+    }
+
+    QJsonObject gen = root["parametry_generatora"].toObject();
+    ui->param_amplituda->setValue(gen["amplituda"].toDouble());
+    ui->param_skladowa->setValue(gen["skladowa"].toDouble());
+    ui->param_okres->setValue(gen["okres"].toInt());
+    ui->param_wypelnienie->setValue(gen["wypelnienie"].toDouble());
+    if(pid["typ"].toString()=="sinus"){
+        ui->typ_syg_sin_button->setChecked(true);
+    }else{
+        ui->typ_syg_prostokat_button->setChecked(true);
+    }
+
+    QJsonObject arx = root["parametry_arx"].toObject();
+
+    m_arxWindow->setopoznienie(arx["opoznienie"].toInt());
+    m_arxWindow->setzaklocenia(arx["zaklocenia"].toDouble());
+    m_arxWindow->setWektorA1(arx["a1"].toDouble());
+    m_arxWindow->setWektorA2(arx["a2"].toDouble());
+    m_arxWindow->setWektorA3(arx["a3"].toDouble());
+    m_arxWindow->setWektorB1(arx["b1"].toDouble());
+    m_arxWindow->setWektorB2(arx["b2"].toDouble());
+    m_arxWindow->setWektorB3(arx["b3"].toDouble());
+    m_arxWindow->setUmax(arx["Umax"].toDouble());
+    m_arxWindow->setUmin(arx["Umin"].toDouble());
+    m_arxWindow->setYmax(arx["Ymax"].toDouble());
+    m_arxWindow->setYmin(arx["Ymin"].toDouble());
+
+
+
+
+
+
+}
+
+void MainWindow::on_actionZapisz_konfiguracj_triggered()
+{
+    ZapiszDoPliku();
+}
+void MainWindow::on_actionWczytaj_konfiguracj_triggered()
+{
+    WczytajZPliku();
+}
+
 
 void MainWindow::aktSym()
 {

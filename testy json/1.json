@@ -1,0 +1,30 @@
+{
+    "parametry_arx": {
+        "Umax": 17,
+        "Umin": 19,
+        "Ymax": 20,
+        "Ymin": 18,
+        "a1": 9,
+        "a2": 10,
+        "a3": 11,
+        "b1": 12,
+        "b2": 13,
+        "b3": 14,
+        "opoznienie": 15,
+        "zaklocenia": 16
+    },
+    "parametry_generatora": {
+        "amplituda": 5,
+        "okres": 4,
+        "skladowa": 6,
+        "wypelnienie": 7
+    },
+    "parametry_pid": {
+        "D": 3,
+        "I": 2,
+        "P": 1,
+        "interwal": 200,
+        "tryb": "w sumie",
+        "typ": "sinus"
+    }
+}

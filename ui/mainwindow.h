@@ -36,6 +36,10 @@ private slots:
     void on_paramARX_button_clicked();
 
     void on_reset_button_clicked();
+
+    void on_actionZapisz_konfiguracj_triggered();
+
+    void on_actionWczytaj_konfiguracj_triggered();
 private:
     Ui::MainWindow *ui;
     WarstwaUslug m_warstwaUslug;
@@ -77,6 +81,7 @@ private:
     arx_set_param *m_arxWindow;
 
     void ZapiszDoPliku();
+    void WczytajZPliku();
 
 };
 #endif // MAINWINDOW_H
