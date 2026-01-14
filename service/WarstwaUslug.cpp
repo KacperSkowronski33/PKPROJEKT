@@ -58,9 +58,9 @@ void WarstwaUslug::ustawOdchylenie(double odchylenie)
 	m_uar.setOdchylenie(odchylenie);
 }
 
-void WarstwaUslug::ustawLimity(double minU,double maxU) 
+void WarstwaUslug::ustawLimity(double minU,double maxU, double minY, double maxY)
 {
-	m_uar.setLimity(minU, maxU, -10.0, 10.0);
+    m_uar.setLimity(minU, maxU, minY, maxY);
 }
 
 void WarstwaUslug::ustawParametrySin(int okres, double amplituda, double skladowaStala) 

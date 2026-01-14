@@ -90,4 +90,5 @@ ProstyUAR::ProstyUAR()
 }
 void ProstyUAR::ustawTryb(bool czyPrzedSuma) {
     m_czyPrzedSuma = czyPrzedSuma;
+    m_regulatorPID.ustawTrybCalkowania(czyPrzedSuma); //sprawdzic czy nie wywala bledu
 }

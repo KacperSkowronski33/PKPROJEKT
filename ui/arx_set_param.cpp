@@ -6,6 +6,11 @@ arx_set_param::arx_set_param(QWidget *parent)
     , ui(new Ui::arx_set_param)
 {
     ui->setupUi(this);
+
+    ui->umin_param->setValue(-10.0);
+    ui->umax_param->setValue(10.0);
+    ui->ymin_param->setValue(-10.0);
+    ui->ymax_param->setValue(10.0);
 }
 
 arx_set_param::~arx_set_param()
@@ -18,7 +23,12 @@ void arx_set_param::on_zatwierdz_button_clicked() {
     std::vector<double> B = { ui->b1_param->value(), ui->b2_param->value(), ui->b3_param->value() };
     int opoznienie = ui->opoznienie_param->value();
     double zaklocenia = ui->zaklocenia_param->value();
-    emit daneZatwierdzone(A, B, opoznienie, zaklocenia);
+    double umin = ui->umin_param->value();
+    double umax = ui->umax_param->value();
+    double ymin = ui->ymin_param->value();
+    double ymax = ui->ymax_param->value();
+
+    emit daneZatwierdzone(A, B, opoznienie, zaklocenia, umin, umax, ymin, ymax);
     this->hide();
 }
 

@@ -11,13 +11,15 @@ MainWindow::MainWindow(QWidget *parent)
     connect(m_timer, &QTimer::timeout, this, &MainWindow::aktSym);
     m_arxWindow = new arx_set_param(this);
 
-    //wykres 1
+    connect(m_arxWindow, &arx_set_param::daneZatwierdzone, this, [this](auto A, auto B, int opoznienia, double zaklocenia, double umin, double umax, double ymin, double ymax){
+        m_warstwaUslug.ustawParametryARX(A, B, opoznienia);
+        m_warstwaUslug.ustawOdchylenie(zaklocenia);
+        m_warstwaUslug.ustawLimity(umin, umax, ymin, ymax);
+    });
+
     generujWykres_ZadReg();
-    //wykres 2
     generujWykres_uchyb();
-    //wykres 3
     generujWykres_ster();
-    //wykres 4
     generujWykres_PID();
 }
 
@@ -41,6 +43,35 @@ void MainWindow::ZapiszDoPliku(){
 
     QJsonObject gen;
     gen["amplituda"] = ui->param_amplituda->value();
+    gen["okres"] = ui->param_okres->value();
+    gen["skladowa"] = ui->param_skladowa->value();
+    gen["wypelnienie"] = ui->param_wypelnienie->value();
+    pid["typ"] = ui->typ_syg_sin_button->isChecked() ? "sinus":"prostokat";
+
+    QJsonObject arx;
+    arx["zaklocenia"] = m_arxWindow->getzaklocenia();
+    arx["opoznienie"] = m_arxWindow->getopoznienie();
+    arx["a1"] = m_arxWindow->getWektorA1();
+    arx["a2"] = m_arxWindow->getWektorA2();
+    arx["a3"] = m_arxWindow->getWektorA3();
+    arx["b1"] = m_arxWindow->getWektorB1();
+    arx["b2"] = m_arxWindow->getWektorB2();
+    arx["b3"] = m_arxWindow->getWektorB3();
+    arx["Umin"] = m_arxWindow->getUmin();
+    arx["Umax"] = m_arxWindow->getUmax();
+    arx["Ymin"] = m_arxWindow->getYmin();
+    arx["Ymax"] = m_arxWindow->getYmax();
+
+
+    root["parametry_pid"] = pid;
+    root["parametry_generatora"] = gen;
+    root["parametry_arx"] = arx;
+
+    QJsonDocument doc(root);
+    QFile plik(sciezka);
+    plik.open(QFile::ReadWrite);
+    plik.write(doc.toJson());
+
 
 }
 
@@ -88,12 +119,6 @@ void MainWindow::WczytajZPliku(){
     m_arxWindow->setUmin(arx["Umin"].toDouble());
     m_arxWindow->setYmax(arx["Ymax"].toDouble());
     m_arxWindow->setYmin(arx["Ymin"].toDouble());
-
-
-
-
-
-
 }
 
 void MainWindow::on_actionZapisz_konfiguracj_triggered()
@@ -361,8 +386,6 @@ void MainWindow::skalowanieY(QValueAxis *oy, const QList<QLineSeries *> &dane)
     oy->setRange(min - margines, max + margines);
 }
 
-
-
 void MainWindow::on_start_button_clicked()
 {
     int interwal = ui->param_interwal->value();
@@ -378,10 +401,6 @@ void MainWindow::on_stop_button_clicked()
 
 void MainWindow::on_paramARX_button_clicked()
 {
-        connect(m_arxWindow, &arx_set_param::daneZatwierdzone, this, [this](auto A, auto B, int opoznienia, double zaklocenia){
-            m_warstwaUslug.ustawParametryARX(A, B, opoznienia);
-            m_warstwaUslug.ustawOdchylenie(zaklocenia);
-        });
 
     m_arxWindow->show();
 
