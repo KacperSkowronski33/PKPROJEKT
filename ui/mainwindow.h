@@ -75,6 +75,7 @@ private:
     QValueAxis *m_Y_wykres_4;
 
     arx_set_param *m_arxWindow;
+    void skalowanieY(QValueAxis *oy, const QList<QLineSeries*> &dane);
 
     void ZapiszDoPliku();
 

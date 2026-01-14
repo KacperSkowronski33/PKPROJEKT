@@ -38,9 +38,6 @@ void MainWindow::ZapiszDoPliku(){
 
     QJsonObject gen;
     gen["amplituda"] = ui->param_amplituda->value();
-    sadas;
-
-
 
 }
 
@@ -99,10 +96,14 @@ void MainWindow::aktSym()
         m_wykres_D->remove(0);
     }
 
-    skalowanieY_ZadReg();
-    skalowanieY_uchyb();
-    skalowanieY_ster();
-    skalowanieY_PID();
+    // skalowanieY_ZadReg();
+    // skalowanieY_uchyb();
+    // skalowanieY_ster();
+    // skalowanieY_PID();
+    skalowanieY(m_Y_wykres_1, {m_wykres_Zad, m_wykres_Reg});
+    skalowanieY(m_Y_wykres_2, {m_wykres_uchyb});
+    skalowanieY(m_Y_wykres_3, {m_wykres_ster});
+    skalowanieY(m_Y_wykres_4, {m_wykres_P, m_wykres_I, m_wykres_D});
 }
 
 void MainWindow::generujWykres_ZadReg()
@@ -280,6 +281,22 @@ void MainWindow::skalowanieY_PID()
     double margines = (maxY - minY) * 0.1;
     m_Y_wykres_4->setRange(minY - margines, maxY + margines);
 }
+
+void MainWindow::skalowanieY(QValueAxis *oy, const QList<QLineSeries *> &dane)
+{
+    double min = 1.0, max = -1.0;
+    for(QLineSeries *d : dane) {
+        QList<QPointF> punkty = d->points();
+        for(QPointF &p : punkty) {
+            if(p.y() < min) min = p.y();
+            if(p.y() > max) max = p.y();
+        }
+    }
+    double margines = (max - min) * 0.1;
+    oy->setRange(min - margines, max + margines);
+}
+
+
 
 void MainWindow::on_start_button_clicked()
 {
