@@ -45,7 +45,7 @@ public:
 
 
 signals:
-    void daneZatwierdzone(std::vector<double> A, std::vector<double> B, int opoznienie, double odchylenie, double umin, double umax, double ymin , double ymax);
+    void daneZatwierdzone(std::vector<double> A, std::vector<double> B, int opoznienie, double odchylenie, double umin, double umax, double ymin , double ymax, bool czyLimit);
 
 private slots:
     void on_zatwierdz_button_clicked();

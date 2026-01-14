@@ -15,7 +15,7 @@ public:
 	void resetPID();
 	void ustawParametryARX(const std::vector<double>& A, const std::vector<double>& B, int k);
 	void ustawOdchylenie(double odchylenie);
-    void ustawLimity(double minU, double maxU, double minY, double maxY);
+    void ustawLimity(double minU, double maxU, double minY, double maxY, bool czyLimit);
 	void ustawRodzajSygnalu(RodzajSygnalu rodzaj);
 	void ustawParametrySin(int okres, double amplituda, double skladowaStala);
 	void ustawParametryProst(int okres, double wypelnienie, double amplituda, double skladowaStala);

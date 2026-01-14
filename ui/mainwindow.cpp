@@ -11,10 +11,10 @@ MainWindow::MainWindow(QWidget *parent)
     connect(m_timer, &QTimer::timeout, this, &MainWindow::aktSym);
     m_arxWindow = new arx_set_param(this);
 
-    connect(m_arxWindow, &arx_set_param::daneZatwierdzone, this, [this](auto A, auto B, int opoznienia, double zaklocenia, double umin, double umax, double ymin, double ymax){
+    connect(m_arxWindow, &arx_set_param::daneZatwierdzone, this, [this](auto A, auto B, int opoznienia, double zaklocenia, double umin, double umax, double ymin, double ymax, double czyLimit){
         m_warstwaUslug.ustawParametryARX(A, B, opoznienia);
         m_warstwaUslug.ustawOdchylenie(zaklocenia);
-        m_warstwaUslug.ustawLimity(umin, umax, ymin, ymax);
+        m_warstwaUslug.ustawLimity(umin, umax, ymin, ymax, czyLimit);
     });
 
     generujWykres_ZadReg();

@@ -27,8 +27,9 @@ void arx_set_param::on_zatwierdz_button_clicked() {
     double umax = ui->umax_param->value();
     double ymin = ui->ymin_param->value();
     double ymax = ui->ymax_param->value();
+    bool czyLimit = ui->czyLimit_check->isChecked();
 
-    emit daneZatwierdzone(A, B, opoznienie, zaklocenia, umin, umax, ymin, ymax);
+    emit daneZatwierdzone(A, B, opoznienie, zaklocenia, umin, umax, ymin, ymax, czyLimit);
     this->hide();
 }
 

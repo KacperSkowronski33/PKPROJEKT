@@ -22,7 +22,7 @@ public:
 
 
 	void setOdchylenie(double odchylenie);
-	void setLimity(double minU, double maxU, double minY, double maxY);
+    void setLimity(double minU, double maxU, double minY, double maxY, bool czyLimit);
 	void resetPID();
     void resetARX();
 	void resetSymulacji();

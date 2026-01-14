@@ -680,7 +680,7 @@ void TESTY_Wlasne::test_3_ARX_testOgraniczeniaSterowania()
 	{
 		// Przygotowanie danych:
 		ModelARX instancjaTestowa({-0.4}, {0.6}, 1, 0.0);
-		instancjaTestowa.setLimit(1.0, 5.0, -10.0, 10.0);
+        instancjaTestowa.setLimit(1.0, 5.0, -10.0, 10.0, true);
 		instancjaTestowa.czyLimit(true);
 
 		constexpr size_t LICZ_ITER = 2;

@@ -28,7 +28,7 @@ public:
 		m_buforOpoznienia = std::deque<double>(opoznienie, 0.0);
 		setOdchylenie(zaklocenie);
 	}
-	void setLimit(double minSter, double maxSter, double minReg, double maxReg);
+    void setLimit(double minSter, double maxSter, double minReg, double maxReg, bool czyLimit);
 	void czyLimit(bool czyLimit);
 	void setOdchylenie(double odchylenie);
 	void setCzyWlasnyLim(bool wlasnyLim);

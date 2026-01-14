@@ -76,10 +76,10 @@ void ProstyUAR::setOdchylenie(double odchylenie)
     m_modelARX.setOdchylenie(odchylenie);
 }
 
-void ProstyUAR::setLimity(double minU, double maxU, double minY, double maxY)
+void ProstyUAR::setLimity(double minU, double maxU, double minY, double maxY, bool czyLimit)
 {
     // Komenda do ModelARX: ustawienie wszystkich 4 limit�w
-    m_modelARX.setLimit(minU, maxU, minY, maxY);
+    m_modelARX.setLimit(minU, maxU, minY, maxY, czyLimit);
 }
 ProstyUAR::ProstyUAR()
     : m_modelARX({ 0.0 }, { 0.0 }, 1, 0.0), // Inicjalizacja ModelARX zerami

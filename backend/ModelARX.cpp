@@ -1,12 +1,14 @@
 #include "ModelARX.h"
 
-void ModelARX::setLimit(double minSter, double maxSter, double minReg, double maxReg)
+void ModelARX::setLimit(double minSter, double maxSter, double minReg, double maxReg, bool czyLimit)
 {
 	m_minSter = minSter;
 	m_maxSter = maxSter;
 	m_minReg = minReg;
 	m_maxReg = maxReg;
 	m_czyWlasnyLimit = true;
+    m_czyLimit = czyLimit;
+
 }
 
 void ModelARX::czyLimit(bool czyLimit)
