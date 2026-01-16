@@ -448,6 +448,9 @@
    </property>
   </widget>
   <widget class="QDoubleSpinBox" name="umin_param">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>770</x>

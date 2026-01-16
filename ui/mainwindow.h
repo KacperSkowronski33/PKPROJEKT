@@ -2,7 +2,6 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QTimer>
 #include <QtCharts>
 #include <QJsonDocument>
 #include <QJsonObject>
@@ -40,16 +39,17 @@ private slots:
     void on_actionZapisz_konfiguracj_triggered();
 
     void on_actionWczytaj_konfiguracj_triggered();
+
+    void getDaneSym(WarstwaUslug::Wykres dane);
+
 private:
     Ui::MainWindow *ui;
-    WarstwaUslug m_warstwaUslug;
-    QTimer *m_timer;
+    WarstwaUslug *m_warstwaUslug;
     int m_interwal;
     double m_czasSym;
 
     //wykres 1
     void generujWykres_ZadReg();
-    void skalowanieY_ZadReg();
     QLineSeries *m_wykres_Zad;
     QLineSeries *m_wykres_Reg;
     QValueAxis *m_X_wykres_1;
@@ -57,21 +57,18 @@ private:
 
     //wykres 2
     void generujWykres_uchyb();
-    void skalowanieY_uchyb();
     QLineSeries *m_wykres_uchyb;
     QValueAxis *m_X_wykres_2;
     QValueAxis *m_Y_wykres_2;
 
     //wykres 3
     void generujWykres_ster();
-    void skalowanieY_ster();
     QLineSeries *m_wykres_ster;
     QValueAxis *m_X_wykres_3;
     QValueAxis *m_Y_wykres_3;
 
     //wykres 4
     void generujWykres_PID();
-    void skalowanieY_PID();
     QLineSeries *m_wykres_P;
     QLineSeries *m_wykres_I;
     QLineSeries *m_wykres_D;
@@ -83,6 +80,7 @@ private:
 
     void ZapiszDoPliku();
     void WczytajZPliku();
+    void utworzOknoARX();
 
 };
 #endif // MAINWINDOW_H

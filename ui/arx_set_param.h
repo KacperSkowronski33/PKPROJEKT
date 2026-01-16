@@ -50,10 +50,11 @@ signals:
 private slots:
     void on_zatwierdz_button_clicked();
     void on_anuluj_button_clicked();
+    void on_czyLimit_check_toggled(bool checked);
 
 private:
     Ui::arx_set_param *ui;
-
+    void limityWartoscDomyslna();
 
 };
 

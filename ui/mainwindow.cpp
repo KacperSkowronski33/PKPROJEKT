@@ -5,17 +5,11 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
+    , m_arxWindow(nullptr)
 {
     ui->setupUi(this);
-    m_timer = new QTimer(this);
-    connect(m_timer, &QTimer::timeout, this, &MainWindow::aktSym);
-    m_arxWindow = new arx_set_param(this);
-
-    connect(m_arxWindow, &arx_set_param::daneZatwierdzone, this, [this](auto A, auto B, int opoznienia, double zaklocenia, double umin, double umax, double ymin, double ymax, double czyLimit){
-        m_warstwaUslug.ustawParametryARX(A, B, opoznienia);
-        m_warstwaUslug.ustawOdchylenie(zaklocenia);
-        m_warstwaUslug.ustawLimity(umin, umax, ymin, ymax, czyLimit);
-    });
+    m_warstwaUslug = new WarstwaUslug(this);
+    connect(m_warstwaUslug, &WarstwaUslug::aktDanychUslugi, this, &MainWindow::getDaneSym);
 
     generujWykres_ZadReg();
     generujWykres_uchyb();
@@ -74,6 +68,10 @@ void MainWindow::ZapiszDoPliku(){
 }
 
 void MainWindow::WczytajZPliku(){
+    if(!m_arxWindow) { //okno jest tworzone po nacisnieciu przycisku, wiec jak ktos wczyta json przed wcisnieciem przycisku to dane nie wyladuja w oknie, bo takie jeszcze nie istnieje
+        utworzOknoARX();
+    }
+
     QString sciezka = QFileDialog::getOpenFileName(this,"Wczytaj konfiguracje","","JSON (*.json)" );
     QFile plik(sciezka);
     plik.open(QIODevice::ReadOnly);
@@ -119,6 +117,17 @@ void MainWindow::WczytajZPliku(){
     m_arxWindow->setYmin(arx["Ymin"].toDouble());
 }
 
+void MainWindow::utworzOknoARX()
+{
+    m_arxWindow = new arx_set_param(this);
+
+    connect(m_arxWindow, &arx_set_param::daneZatwierdzone, this, [this](auto A, auto B, int opoznienia, double zaklocenia, double umin, double umax, double ymin, double ymax, double czyLimit){
+        m_warstwaUslug->ustawParametryARX(A, B, opoznienia);
+        m_warstwaUslug->ustawOdchylenie(zaklocenia);
+        m_warstwaUslug->ustawLimity(umin, umax, ymin, ymax, czyLimit);
+    });
+}
+
 void MainWindow::on_actionZapisz_konfiguracj_triggered()
 {
     ZapiszDoPliku();
@@ -128,42 +137,19 @@ void MainWindow::on_actionWczytaj_konfiguracj_triggered()
     WczytajZPliku();
 }
 
-
-void MainWindow::aktSym()
+void MainWindow::getDaneSym(WarstwaUslug::Wykres dane)
 {
-    m_interwal = ui->param_interwal->value();
+    aktSym();
 
-    if (m_timer->interval() != m_interwal) {
-        m_timer->setInterval(m_interwal);
-    }
+    m_czasSym += (static_cast<double>(m_interwal) / 1000.0);
 
-    m_warstwaUslug.ustawParametryPID(ui->param_P->value(), ui->param_I->value(), ui->param_D->value());
-
-    if (ui->typ_syg_sin_button->isChecked()) {
-        m_warstwaUslug.ustawRodzajSygnalu(WarstwaUslug::RodzajSygnalu::Sinusoida);
-        m_warstwaUslug.ustawParametrySin(ui->param_okres->value(), ui->param_amplituda->value(), ui->param_skladowa->value());
-    }
-    else if (ui->typ_syg_prostokat_button->isChecked()) {
-        m_warstwaUslug.ustawRodzajSygnalu(WarstwaUslug::RodzajSygnalu::Prostokatny);
-        m_warstwaUslug.ustawParametryProst(ui->param_okres->value(), ui->param_wypelnienie->value(), ui->param_amplituda->value(), ui->param_skladowa->value());
-    }
-    else {
-        m_warstwaUslug.ustawRodzajSygnalu(WarstwaUslug::RodzajSygnalu::Brak);
-    }
-
-    m_warstwaUslug.ustawTrybCalkowania(ui->tryb_calk_przed_suma_button->isChecked());
-
-    WarstwaUslug::Wykres dane_wykres = m_warstwaUslug.wykonajKrokSym();
-
-    m_wykres_Zad->append(m_czasSym, dane_wykres.wartZad);
-    m_wykres_Reg->append(m_czasSym, dane_wykres.wartReg);
-    m_wykres_uchyb->append(m_czasSym, dane_wykres.uchyb);
-    m_wykres_ster->append(m_czasSym, dane_wykres.sterowanie);
-    m_wykres_P->append(m_czasSym, dane_wykres.p);
-    m_wykres_I->append(m_czasSym, dane_wykres.i);
-    m_wykres_D->append(m_czasSym, dane_wykres.d);
-
-    m_czasSym += (m_interwal / 1000.0);
+    m_wykres_Zad->append(m_czasSym, dane.wartZad);
+    m_wykres_Reg->append(m_czasSym, dane.wartReg);
+    m_wykres_uchyb->append(m_czasSym, dane.uchyb);
+    m_wykres_ster->append(m_czasSym, dane.sterowanie);
+    m_wykres_P->append(m_czasSym, dane.p);
+    m_wykres_I->append(m_czasSym, dane.i);
+    m_wykres_D->append(m_czasSym, dane.d);
 
     double czasPrzesunieciaOsi = 10.0;
     if(m_czasSym > czasPrzesunieciaOsi) {
@@ -184,14 +170,38 @@ void MainWindow::aktSym()
         m_wykres_D->remove(0);
     }
 
-    // skalowanieY_ZadReg();
-    // skalowanieY_uchyb();
-    // skalowanieY_ster();
-    // skalowanieY_PID();
     skalowanieY(m_Y_wykres_1, {m_wykres_Zad, m_wykres_Reg});
     skalowanieY(m_Y_wykres_2, {m_wykres_uchyb});
     skalowanieY(m_Y_wykres_3, {m_wykres_ster});
     skalowanieY(m_Y_wykres_4, {m_wykres_P, m_wykres_I, m_wykres_D});
+}
+
+
+void MainWindow::aktSym()
+{
+    int aktInterwal = ui->param_interwal->value();
+
+    if (aktInterwal != m_interwal) {
+        m_interwal = aktInterwal;
+        m_warstwaUslug->setInterwal(m_interwal);
+    }
+
+    m_warstwaUslug->ustawParametryPID(ui->param_P->value(), ui->param_I->value(), ui->param_D->value());
+
+    if (ui->typ_syg_sin_button->isChecked()) {
+        m_warstwaUslug->ustawRodzajSygnalu(WarstwaUslug::RodzajSygnalu::Sinusoida);
+        m_warstwaUslug->ustawParametrySin(ui->param_okres->value(), ui->param_amplituda->value(), ui->param_skladowa->value());
+    }
+    else if (ui->typ_syg_prostokat_button->isChecked()) {
+        m_warstwaUslug->ustawRodzajSygnalu(WarstwaUslug::RodzajSygnalu::Prostokatny);
+        m_warstwaUslug->ustawParametryProst(ui->param_okres->value(), ui->param_wypelnienie->value(), ui->param_amplituda->value(), ui->param_skladowa->value());
+    }
+    else {
+        m_warstwaUslug->ustawRodzajSygnalu(WarstwaUslug::RodzajSygnalu::Brak);
+    }
+
+    m_warstwaUslug->ustawTrybCalkowania(ui->tryb_calk_przed_suma_button->isChecked());
+
 }
 
 void MainWindow::generujWykres_ZadReg()
@@ -207,7 +217,7 @@ void MainWindow::generujWykres_ZadReg()
     m_X_wykres_1 = new QValueAxis();
     m_Y_wykres_1 = new QValueAxis();
     m_X_wykres_1->setRange(0, 10);
-    //m_Y_wykres_1->setRange(-1,1);
+    m_Y_wykres_1->setRange(-1,1);
 
     wykres_Zad_Reg->addAxis(m_X_wykres_1, Qt::AlignBottom);
     wykres_Zad_Reg->addAxis(m_Y_wykres_1, Qt::AlignLeft);
@@ -223,23 +233,6 @@ void MainWindow::generujWykres_ZadReg()
     ui->wykres_zad_reg->setChart(wykres_Zad_Reg);
 }
 
-void MainWindow::skalowanieY_ZadReg()
-{
-    double minY = 1.0, maxY = -1.0;
-    QList<QPointF> pZad = m_wykres_Zad->points();
-    QList<QPointF> pReg = m_wykres_Reg->points();
-    for(QPointF &p : pZad) {
-        if(p.y() < minY) minY = p.y();
-        if(p.y() > maxY) maxY = p.y();
-    }
-    for(QPointF &p : pReg) {
-        if(p.y() < minY) minY = p.y();
-        if(p.y() > maxY) maxY = p.y();
-    }
-    double margines = (maxY - minY) * 0.1;
-    m_Y_wykres_1->setRange(minY - margines, maxY + margines); //margines +10%
-}
-
 void MainWindow::generujWykres_uchyb()
 {
     m_wykres_uchyb = new QLineSeries();
@@ -250,6 +243,7 @@ void MainWindow::generujWykres_uchyb()
     m_X_wykres_2 = new QValueAxis();
     m_Y_wykres_2 = new QValueAxis();
     m_X_wykres_2->setRange(0, 10);
+    m_Y_wykres_1->setRange(-1,1);
 
     wykres_uchyb->addAxis(m_X_wykres_2, Qt::AlignBottom);
     wykres_uchyb->addAxis(m_Y_wykres_2, Qt::AlignLeft);
@@ -263,20 +257,6 @@ void MainWindow::generujWykres_uchyb()
     ui->wykres_uchyb->setChart(wykres_uchyb);
 }
 
-void MainWindow::skalowanieY_uchyb()
-{
-    double minY = 1.0, maxY = -1.0;
-    QList<QPointF> pZad = m_wykres_uchyb->points();
-    for(QPointF &p : pZad) {
-        if(p.y() < minY) minY = p.y();
-        if(p.y() > maxY) maxY = p.y();
-    }
-    if(maxY - minY < 0.001) {maxY += 0.1; minY -= 0.1;}
-
-    double margines = (maxY - minY) * 0.1;
-    m_Y_wykres_2->setRange(minY - margines, maxY + margines); //margines +10%
-}
-
 void MainWindow::generujWykres_ster()
 {
     m_wykres_ster = new QLineSeries();
@@ -287,6 +267,7 @@ void MainWindow::generujWykres_ster()
     m_X_wykres_3 = new QValueAxis();
     m_Y_wykres_3 = new QValueAxis();
     m_X_wykres_3->setRange(0, 10);
+    m_Y_wykres_1->setRange(-1,1);
 
     wykres_ster->addAxis(m_X_wykres_3, Qt::AlignBottom);
     wykres_ster->addAxis(m_Y_wykres_3, Qt::AlignLeft);
@@ -298,20 +279,6 @@ void MainWindow::generujWykres_ster()
     wykres_ster->setBackgroundRoundness(5);
 
     ui->wykres_ster->setChart(wykres_ster);
-}
-
-void MainWindow::skalowanieY_ster()
-{
-    double minY = 1.0, maxY = -1.0;
-    QList<QPointF> pZad = m_wykres_ster->points();
-    for(QPointF &p : pZad) {
-        if(p.y() < minY) minY = p.y();
-        if(p.y() > maxY) maxY = p.y();
-    }
-    if(maxY - minY < 0.001) {maxY += 1.0; minY -= 1.0;}
-
-    double margines = (maxY - minY) * 0.1;
-    m_Y_wykres_3->setRange(minY - margines, maxY + margines); //margines +10%
 }
 
 void MainWindow::generujWykres_PID()
@@ -330,6 +297,7 @@ void MainWindow::generujWykres_PID()
     m_X_wykres_4 = new QValueAxis();
     m_Y_wykres_4 = new QValueAxis();
     m_X_wykres_4->setRange(0, 10);
+    m_Y_wykres_1->setRange(-1,1);
 
    wykres_PID->addAxis(m_X_wykres_4, Qt::AlignBottom);
    wykres_PID->addAxis(m_Y_wykres_4, Qt::AlignLeft);
@@ -345,29 +313,6 @@ void MainWindow::generujWykres_PID()
     wykres_PID->setBackgroundRoundness(5);
 
     ui->wykres_skladowePID->setChart(wykres_PID);
-}
-
-void MainWindow::skalowanieY_PID()
-{
-    double minY = 1.0, maxY = -1.0;
-    QList<QPointF> pP = m_wykres_P->points();
-    QList<QPointF> pI = m_wykres_I->points();
-    QList<QPointF> pD = m_wykres_D->points();
-    for(QPointF &p : pP) {
-        if(p.y() < minY) minY = p.y();
-        if(p.y() > maxY) maxY = p.y();
-    }
-    for(QPointF &p : pI) {
-        if(p.y() < minY) minY = p.y();
-        if(p.y() > maxY) maxY = p.y();
-    }
-    for(QPointF &p : pD) {
-        if(p.y() < minY) minY = p.y();
-        if(p.y() > maxY) maxY = p.y();
-    }
-    if(maxY - minY < 0.001) {maxY += 1.0; minY -= 1.0;}
-    double margines = (maxY - minY) * 0.1;
-    m_Y_wykres_4->setRange(minY - margines, maxY + margines);
 }
 
 void MainWindow::skalowanieY(QValueAxis *oy, const QList<QLineSeries *> &dane)
@@ -387,27 +332,26 @@ void MainWindow::skalowanieY(QValueAxis *oy, const QList<QLineSeries *> &dane)
 void MainWindow::on_start_button_clicked()
 {
     int interwal = ui->param_interwal->value();
-    m_timer->start(interwal);
+    m_warstwaUslug->startSym(interwal);
 }
 
 
 void MainWindow::on_stop_button_clicked()
 {
-    m_timer->stop();
+    m_warstwaUslug->stopSym();
 }
-
 
 void MainWindow::on_paramARX_button_clicked()
 {
-
+    if(!m_arxWindow) {
+        utworzOknoARX();
+    }
     m_arxWindow->show();
-
-
 }
 
 void MainWindow::on_reset_button_clicked()
 {
-    m_timer->stop();
+    m_warstwaUslug->stopSym();
     m_czasSym = 0.0;
     m_wykres_Zad->clear();
     m_wykres_Reg->clear();
@@ -416,12 +360,14 @@ void MainWindow::on_reset_button_clicked()
     m_wykres_P->clear();
     m_wykres_I->clear();
     m_wykres_D->clear();
-    m_warstwaUslug.resetSymulacji();
-    skalowanieY_ZadReg();
-    skalowanieY_uchyb();
-    skalowanieY_ster();
-    skalowanieY_PID();
+    m_warstwaUslug->resetSymulacji();
     m_X_wykres_1->setRange(0,10);
+
+    m_Y_wykres_1->setRange(-1,1);
+    m_Y_wykres_2->setRange(-1,1);
+    m_Y_wykres_3->setRange(-1,1);
+    m_Y_wykres_4->setRange(-1,1);
+
     m_X_wykres_2->setRange(0,10);
     m_X_wykres_3->setRange(0,10);
     m_X_wykres_4->setRange(0,10);

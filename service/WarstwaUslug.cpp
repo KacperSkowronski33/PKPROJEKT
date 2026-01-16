@@ -38,6 +38,37 @@ void WarstwaUslug::resetSymulacji()
 	m_uar.resetSymulacji();
 }
 
+void WarstwaUslug::sygnalSymulacji()
+{
+    double wartZadana = 0.0;
+    switch (m_rodzajSyg)
+    {
+    case RodzajSygnalu::Brak:
+        wartZadana = 1.0;
+        break;
+    case RodzajSygnalu::Sinusoida:
+        wartZadana = m_sygSin.wynikSin(m_krokSym);
+        break;
+    case RodzajSygnalu::Prostokatny:
+        wartZadana = m_sygPro.wynikProstokat(m_krokSym);
+        break;
+    }
+
+    m_krokSym++;
+    double wynik = m_uar.symuluj(wartZadana);
+
+    Wykres dane;
+    dane.wartZad = wartZadana;
+    dane.wartReg = wynik;
+    dane.uchyb = m_uar.getUchyb();
+    dane.sterowanie = m_uar.getWartSter();
+    dane.p = m_uar.getP();
+    dane.i = m_uar.getI();
+    dane.d = m_uar.getD();
+
+    emit aktDanychUslugi(dane);
+}
+
 void WarstwaUslug::ustawParametryPID(double k, double Ti, double Td)
 {
 	m_uar.setPID(k, Ti, Td);
@@ -84,11 +115,27 @@ void WarstwaUslug::ustawRodzajSygnalu(RodzajSygnalu rodzaj)
 	m_rodzajSyg = rodzaj;
 }
 
-WarstwaUslug::WarstwaUslug()
-	: m_uar(), // Wywo�uje nowy konstruktor domy�lny ProstyUAR
-	m_rodzajSyg(RodzajSygnalu::Brak),
-	m_krokSym(0) {
+WarstwaUslug::WarstwaUslug(QObject *parent) : QObject(parent), m_uar(), m_rodzajSyg(RodzajSygnalu::Brak), m_krokSym(0)
+{
+    m_timer = new QTimer(this);
+    connect(m_timer, &QTimer::timeout, this, &WarstwaUslug::sygnalSymulacji);
 }
+
+void WarstwaUslug::startSym(int interwal)
+{
+    m_timer->start(interwal);
+}
+
+void WarstwaUslug::stopSym()
+{
+    m_timer->stop();
+}
+
+void WarstwaUslug::setInterwal(int interwal)
+{
+    m_timer->setInterval(interwal);
+}
+
 void WarstwaUslug::ustawTrybCalkowania(bool czyPrzedSuma) {
     m_uar.ustawTryb(czyPrzedSuma);
 }

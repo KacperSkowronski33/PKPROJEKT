@@ -82,12 +82,13 @@ void ProstyUAR::setLimity(double minU, double maxU, double minY, double maxY, bo
     m_modelARX.setLimit(minU, maxU, minY, maxY, czyLimit);
 }
 ProstyUAR::ProstyUAR()
-    : m_modelARX({ 0.0 }, { 0.0 }, 1, 0.0), // Inicjalizacja ModelARX zerami
-    m_regulatorPID(0.0, 0.0, 0.0),    // Inicjalizacja RegulatorPID zerami
-    m_krokPoprzedni(0.0),
+    : m_krokPoprzedni(0.0), // Inicjalizacja ModelARX zerami
+    m_modelARX({ 0.0 }, { 0.0 }, 1, 0.0),    // Inicjalizacja RegulatorPID zerami
+    m_regulatorPID(0.0, 0.0, 0.0),
     m_uchybPoprzedni(0.0),
     m_WartSterPoprzedni(0.0) {
 }
+
 void ProstyUAR::ustawTryb(bool czyPrzedSuma) {
     m_czyPrzedSuma = czyPrzedSuma;
     m_regulatorPID.ustawTrybCalkowania(czyPrzedSuma); //sprawdzic czy nie wywala bledu

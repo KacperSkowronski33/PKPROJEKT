@@ -7,10 +7,8 @@ arx_set_param::arx_set_param(QWidget *parent)
 {
     ui->setupUi(this);
 
-    ui->umin_param->setValue(-10.0);
-    ui->umax_param->setValue(10.0);
-    ui->ymin_param->setValue(-10.0);
-    ui->ymax_param->setValue(10.0);
+    limityWartoscDomyslna();
+    on_czyLimit_check_toggled(false);
 }
 
 arx_set_param::~arx_set_param()
@@ -80,4 +78,26 @@ void arx_set_param::setUmax(double value){ui->umax_param->setValue(value);}
 void arx_set_param::setYmin(double value){ui->ymin_param->setValue(value);}
 void arx_set_param::setYmax(double value){ui->ymax_param->setValue(value);}
 
+
+
+
+void arx_set_param::on_czyLimit_check_toggled(bool checked)
+{
+    ui->umax_param->setEnabled(checked);
+    ui->umin_param->setEnabled(checked);
+    ui->ymax_param->setEnabled(checked);
+    ui->ymin_param->setEnabled(checked);
+
+    if(!checked) {
+        limityWartoscDomyslna();
+    }
+}
+
+void arx_set_param::limityWartoscDomyslna()
+{
+    ui->umin_param->setValue(-10.0);
+    ui->umax_param->setValue(10.0);
+    ui->ymin_param->setValue(-10.0);
+    ui->ymax_param->setValue(10.0);
+}
 
