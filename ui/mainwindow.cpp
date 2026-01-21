@@ -71,6 +71,7 @@ void MainWindow::ZapiszDoPliku(){
     arx["Umax"] = m_arxWindow->getUmax();
     arx["Ymin"] = m_arxWindow->getYmin();
     arx["Ymax"] = m_arxWindow->getYmax();
+    arx["czyLimit"] = m_arxWindow->getLimit();
 
 
     root["parametry_pid"] = pid;
@@ -131,6 +132,10 @@ void MainWindow::WczytajZPliku(){
     m_arxWindow->setUmin(arx["Umin"].toDouble());
     m_arxWindow->setYmax(arx["Ymax"].toDouble());
     m_arxWindow->setYmin(arx["Ymin"].toDouble());
+    m_arxWindow->setLimit(arx["czyLimit"].toBool());
+
+    m_arxWindow->on_zatwierdz_button_clicked();
+
 }
 
 void MainWindow::utworzOknoARX()

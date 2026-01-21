@@ -65,6 +65,8 @@ double arx_set_param::getUmax(){return ui->umax_param->value();}
 double arx_set_param::getUmin(){return ui->umin_param->value();}
 double arx_set_param::getYmax(){return ui->ymax_param->value();}
 double arx_set_param::getYmin(){return ui->ymin_param->value();}
+bool arx_set_param::getLimit(){return ui->czyLimit_check->isChecked();}
+
 
 void arx_set_param::setopoznienie(int value){ui->opoznienie_param->setValue(value);}
 void arx_set_param::setzaklocenia(double value){ui->zaklocenia_param->setValue(value);}
@@ -78,6 +80,7 @@ void arx_set_param::setUmin(double value){ui->umin_param->setValue(value);}
 void arx_set_param::setUmax(double value){ui->umax_param->setValue(value);}
 void arx_set_param::setYmin(double value){ui->ymin_param->setValue(value);}
 void arx_set_param::setYmax(double value){ui->ymax_param->setValue(value);}
+void arx_set_param::setLimit(bool checked) {ui->czyLimit_check->setChecked(checked);}
 
 
 

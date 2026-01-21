@@ -28,6 +28,7 @@ public:
     double getUmax();
     double getYmin();
     double getYmax();
+    bool getLimit();
 
     void setopoznienie(int value);
     void setzaklocenia(double value);
@@ -41,14 +42,15 @@ public:
     void setUmax(double value);
     void setYmin(double value);
     void setYmax(double value);
+    void setLimit(bool checked);
 
 
-
+void on_zatwierdz_button_clicked();
 signals:
     void daneZatwierdzone(std::vector<double> A, std::vector<double> B, int opoznienie, double odchylenie, double umin, double umax, double ymin , double ymax, bool czyLimit);
 
 private slots:
-    void on_zatwierdz_button_clicked();
+
     void on_anuluj_button_clicked();
     void on_czyLimit_check_toggled(bool checked);
 
