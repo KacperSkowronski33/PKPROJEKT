@@ -44,7 +44,7 @@ void arx_set_param::resetui(){
     ui->b1_param->setValue(0.0);
     ui->b2_param->setValue(0.0);
     ui->b3_param->setValue(0.0);
-    ui->opoznienie_param->setValue(0);
+    ui->opoznienie_param->setValue(1);
     ui->umax_param->setValue(0.0);
     ui->umin_param->setValue(0.0);
     ui->ymax_param->setValue(0.0);

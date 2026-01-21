@@ -24,8 +24,8 @@ public:
 	void ustawOdchylenie(double odchylenie);
     void ustawLimity(double minU, double maxU, double minY, double maxY, bool czyLimit);
 	void ustawRodzajSygnalu(RodzajSygnalu rodzaj);
-	void ustawParametrySin(int okres, double amplituda, double skladowaStala);
-	void ustawParametryProst(int okres, double wypelnienie, double amplituda, double skladowaStala);
+    void ustawParametrySin(double okres, double amplituda, double skladowaStala);
+    void ustawParametryProst(double okres, double wypelnienie, double amplituda, double skladowaStala);
     void ustawTrybCalkowania(bool czyPrzedSuma);
 	void resetSymulacji();
     void resetujCalke();
@@ -45,6 +45,7 @@ private:
 	GeneratorSinusoida m_sygSin; //do generowania sinusoidy
 	GeneratorProstokat m_sygPro; //do generowania prostokata
 	int m_krokSym;				 //krok symulacji
+    int okresDoProbki(double okres);
 
 };
 

@@ -109,7 +109,7 @@ void MainWindow::WczytajZPliku(){
     QJsonObject gen = root["parametry_generatora"].toObject();
     ui->param_amplituda->setValue(gen["amplituda"].toDouble());
     ui->param_skladowa->setValue(gen["skladowa"].toDouble());
-    ui->param_okres->setValue(gen["okres"].toInt());
+    ui->param_okres->setValue(gen["okres"].toDouble());
     ui->param_wypelnienie->setValue(gen["wypelnienie"].toDouble());
     if(pid["typ"].toString()=="sinus"){
         ui->typ_syg_sin_button->setChecked(true);
@@ -245,6 +245,8 @@ void MainWindow::generujWykres_ZadReg()
     wykres_Zad_Reg->layout()->setContentsMargins(0,0,0,0);
     wykres_Zad_Reg->setMargins(QMargins(0,0,0,0));
     wykres_Zad_Reg->setBackgroundRoundness(5);
+    m_X_wykres_1->setTitleText("Czas [s]");
+    m_Y_wykres_1->setTitleText("Wartość");
 
     ui->wykres_zad_reg->setChart(wykres_Zad_Reg);
 }
@@ -252,14 +254,14 @@ void MainWindow::generujWykres_ZadReg()
 void MainWindow::generujWykres_uchyb()
 {
     m_wykres_uchyb = new QLineSeries();
-    m_wykres_uchyb->setName("Uchyb");
+    //m_wykres_uchyb->setName("Uchyb");
     QChart *wykres_uchyb = new QChart();
     wykres_uchyb->addSeries(m_wykres_uchyb);
 
     m_X_wykres_2 = new QValueAxis();
     m_Y_wykres_2 = new QValueAxis();
     m_X_wykres_2->setRange(0, 10);
-    m_Y_wykres_1->setRange(-1,1);
+    m_Y_wykres_2->setRange(-1,1);
 
     wykres_uchyb->addAxis(m_X_wykres_2, Qt::AlignBottom);
     wykres_uchyb->addAxis(m_Y_wykres_2, Qt::AlignLeft);
@@ -269,6 +271,8 @@ void MainWindow::generujWykres_uchyb()
     wykres_uchyb->layout()->setContentsMargins(0,0,0,0);
     wykres_uchyb->setMargins(QMargins(0,0,0,0));
     wykres_uchyb->setBackgroundRoundness(5);
+    m_X_wykres_2->setTitleText("Czas [s]");
+    m_Y_wykres_2->setTitleText("Wartość uchybu");
 
     ui->wykres_uchyb->setChart(wykres_uchyb);
 }
@@ -278,7 +282,7 @@ void MainWindow::generujWykres_ster()
     m_wykres_ster = new QLineSeries();
     QChart *wykres_ster = new QChart();
     wykres_ster->addSeries(m_wykres_ster);
-    m_wykres_ster->setName("Sterowanie");
+    //m_wykres_ster->setName("Sterowanie");
 
     m_X_wykres_3 = new QValueAxis();
     m_Y_wykres_3 = new QValueAxis();
@@ -293,6 +297,8 @@ void MainWindow::generujWykres_ster()
     wykres_ster->layout()->setContentsMargins(0,0,0,0);
     wykres_ster->setMargins(QMargins(0,0,0,0));
     wykres_ster->setBackgroundRoundness(5);
+    m_X_wykres_3->setTitleText("Czas [s]");
+    m_Y_wykres_3->setTitleText("Wartość sterowania");
 
     ui->wykres_ster->setChart(wykres_ster);
 }
@@ -327,6 +333,8 @@ void MainWindow::generujWykres_PID()
     wykres_PID->layout()->setContentsMargins(0,0,0,0);
     wykres_PID->setMargins(QMargins(0,0,0,0));
     wykres_PID->setBackgroundRoundness(5);
+    m_X_wykres_4->setTitleText("Czas [s]");
+    m_Y_wykres_4->setTitleText("Wartości PID");
 
     ui->wykres_skladowePID->setChart(wykres_PID);
 }
@@ -395,7 +403,7 @@ void MainWindow::on_reset_button_clicked()
     ui->param_D->setValue(0.0);
     ui->param_amplituda->setValue(0.0);
     ui->param_interwal->setValue(200);
-    ui->param_okres->setValue(1);
+    ui->param_okres->setValue(1.0);
     ui->param_skladowa->setValue(0.0);
     ui->param_wypelnienie->setValue(0.0);
     ui->tryb_calk_przed_suma_button->setChecked(true);

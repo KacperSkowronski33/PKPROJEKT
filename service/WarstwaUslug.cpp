@@ -69,6 +69,13 @@ void WarstwaUslug::sygnalSymulacji()
     emit aktDanychUslugi(dane);
 }
 
+int WarstwaUslug::okresDoProbki(double okres)
+{
+    int okresProbka = static_cast<int>((okres * 1000.0) /m_interwalUslugi);
+    if(okresProbka < 1) okresProbka = 1;
+    return okresProbka;
+}
+
 void WarstwaUslug::ustawParametryPID(double k, double Ti, double Td)
 {
 	m_uar.setPID(k, Ti, Td);
@@ -94,20 +101,21 @@ void WarstwaUslug::ustawLimity(double minU,double maxU, double minY, double maxY
     m_uar.setLimity(minU, maxU, minY, maxY, czyLimit);
 }
 
-void WarstwaUslug::ustawParametrySin(int okres, double amplituda, double skladowaStala) 
+void WarstwaUslug::ustawParametrySin(double okres, double amplituda, double skladowaStala)
 {
-	m_sygSin.setOkres(okres);
+    int okresProbka = okresDoProbki(okres);
+    m_sygSin.setOkres(okresProbka);
 	m_sygSin.setAmplituda(amplituda);
 	m_sygSin.setStala(skladowaStala);
 }
 
-void WarstwaUslug::ustawParametryProst(int okres, double wypelnienie, double amplituda, double skladowaStala)
+void WarstwaUslug::ustawParametryProst(double okres, double wypelnienie, double amplituda, double skladowaStala)
 {
-	m_sygPro.setOkres(okres);
+    int okresProbka = okresDoProbki(okres);
+    m_sygPro.setOkres(okresProbka);
 	m_sygPro.setWypelnienie(wypelnienie);
 	m_sygPro.setAmplituda(amplituda);
 	m_sygPro.setStala(skladowaStala);
-
 }
 
 void WarstwaUslug::ustawRodzajSygnalu(RodzajSygnalu rodzaj)
