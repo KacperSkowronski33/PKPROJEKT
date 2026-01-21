@@ -70,3 +70,4 @@ release/
 # --- Foldery budowania 
 build/
 /build-*/
+ui/mainwindow_kopia.ui

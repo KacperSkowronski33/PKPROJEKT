@@ -9,6 +9,7 @@ arx_set_param::arx_set_param(QWidget *parent)
 
     limityWartoscDomyslna();
     on_czyLimit_check_toggled(false);
+    this->setWindowTitle("PARAMETRY ARX");
 }
 
 arx_set_param::~arx_set_param()

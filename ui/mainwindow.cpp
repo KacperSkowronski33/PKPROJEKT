@@ -15,6 +15,7 @@ MainWindow::MainWindow(QWidget *parent)
     generujWykres_uchyb();
     generujWykres_ster();
     generujWykres_PID();
+    this->setWindowTitle("STATUS SYMULACJI - ZATRZYMANA");
 }
 
 MainWindow::~MainWindow()
@@ -333,12 +334,14 @@ void MainWindow::on_start_button_clicked()
 {
     int interwal = ui->param_interwal->value();
     m_warstwaUslug->startSym(interwal);
+    this->setWindowTitle("STATUS SYMULACJI - URUCHOMIONA");
 }
 
 
 void MainWindow::on_stop_button_clicked()
 {
     m_warstwaUslug->stopSym();
+    this->setWindowTitle("STATUS SYMULACJI - ZATRZYMANA");
 }
 
 void MainWindow::on_paramARX_button_clicked()
