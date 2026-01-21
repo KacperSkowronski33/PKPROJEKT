@@ -44,7 +44,7 @@ public:
     void setYmax(double value);
     void setLimit(bool checked);
 
-
+public slots:
 void on_zatwierdz_button_clicked();
 signals:
     void daneZatwierdzone(std::vector<double> A, std::vector<double> B, int opoznienie, double odchylenie, double umin, double umax, double ymin , double ymax, bool czyLimit);

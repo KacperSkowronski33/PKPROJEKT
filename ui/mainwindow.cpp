@@ -138,6 +138,7 @@ void MainWindow::WczytajZPliku(){
 
     m_arxWindow->on_zatwierdz_button_clicked();
 
+
 }
 
 void MainWindow::utworzOknoARX()
