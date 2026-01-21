@@ -28,6 +28,8 @@ public:
 	void ustawParametryProst(int okres, double wypelnienie, double amplituda, double skladowaStala);
     void ustawTrybCalkowania(bool czyPrzedSuma);
 	void resetSymulacji();
+    void resetujCalke();
+    void resetujRozniczke();
 
 signals:
     void aktDanychUslugi(WarstwaUslug::Wykres dane);

@@ -70,6 +70,15 @@ void ProstyUAR::resetSymulacji()
     m_modelARX.resetARX();
 }
 
+void ProstyUAR::resetCalki()
+{
+    m_regulatorPID.resetujcalke();
+}
+void ProstyUAR::resetRozniczki()
+{
+    m_regulatorPID.resetujrozniczke();
+}
+
 void ProstyUAR::setOdchylenie(double odchylenie)
 {
     // Komenda do ModelARX: ustawienie tylko odchylenia dla Test�w 9 i 10

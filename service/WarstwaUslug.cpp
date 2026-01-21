@@ -139,3 +139,13 @@ void WarstwaUslug::setInterwal(int interwal)
 void WarstwaUslug::ustawTrybCalkowania(bool czyPrzedSuma) {
     m_uar.ustawTryb(czyPrzedSuma);
 }
+
+void WarstwaUslug::resetujCalke()
+{
+    m_uar.resetCalki();
+};
+
+void WarstwaUslug::resetujRozniczke()
+{
+    m_uar.resetRozniczki();
+};

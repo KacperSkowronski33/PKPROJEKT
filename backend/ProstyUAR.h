@@ -26,6 +26,8 @@ public:
 	void resetPID();
     void resetARX();
 	void resetSymulacji();
+    void resetCalki();
+    void resetRozniczki();
 
 	void setPID(double k, double Ti, double Td);
 	void setARX(const std::vector<double>& A, const std::vector<double>& B, int opoznienie, double zaklocenie);

@@ -42,6 +42,10 @@ private slots:
 
     void getDaneSym(WarstwaUslug::Wykres dane);
 
+    void on_resest_cal_button_clicked();
+
+    void on_reset_roz_button_clicked();
+
 private:
     Ui::MainWindow *ui;
     WarstwaUslug *m_warstwaUslug;

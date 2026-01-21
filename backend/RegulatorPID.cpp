@@ -11,7 +11,7 @@ RegulatorPID::RegulatorPID(double k, double Ti, double Td, double T)
 	m_skladowaP = 0.0;
 	m_skladowaI = 0.0;
 	m_skladowaD = 0.0;
-	m_trybcalkowania = true; //domyslnie pod suma
+    m_trybcalkowania = false; //domyslnie przed suma
 }
 void RegulatorPID::ustawParametry(double k, double Ti, double Td)
 {

@@ -387,3 +387,13 @@ void MainWindow::on_reset_button_clicked()
     m_arxWindow->resetui();
 };
 
+
+void MainWindow::on_resest_cal_button_clicked()
+{
+    m_warstwaUslug->resetujCalke();
+};
+
+void MainWindow::on_reset_roz_button_clicked()
+{
+    m_warstwaUslug->resetujRozniczke();
+};
