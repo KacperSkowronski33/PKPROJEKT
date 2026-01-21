@@ -9,13 +9,28 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     m_warstwaUslug = new WarstwaUslug(this);
+
+    connect(ui->param_P, &QDoubleSpinBox::editingFinished, this, &MainWindow::aktSym);
+    connect(ui->param_I, &QDoubleSpinBox::editingFinished, this, &MainWindow::aktSym);
+    connect(ui->param_D, &QDoubleSpinBox::editingFinished, this, &MainWindow::aktSym);
+    connect(ui->param_interwal, &QDoubleSpinBox::editingFinished, this, &MainWindow::aktSym);
+    connect(ui->param_amplituda, &QDoubleSpinBox::editingFinished, this, &MainWindow::aktSym);
+    connect(ui->param_okres, &QSpinBox::editingFinished, this, &MainWindow::aktSym);
+    connect(ui->param_skladowa, &QDoubleSpinBox::editingFinished, this, &MainWindow::aktSym);
+    connect(ui->param_wypelnienie, &QDoubleSpinBox::editingFinished, this, &MainWindow::aktSym);
     connect(m_warstwaUslug, &WarstwaUslug::aktDanychUslugi, this, &MainWindow::getDaneSym);
+
+
+    m_interwal = 200.0;
+    m_czasSym = 0.0;
+    aktSym();
 
     generujWykres_ZadReg();
     generujWykres_uchyb();
     generujWykres_ster();
     generujWykres_PID();
     this->setWindowTitle("STATUS SYMULACJI - ZATRZYMANA");
+
 }
 
 MainWindow::~MainWindow()
@@ -140,7 +155,6 @@ void MainWindow::on_actionWczytaj_konfiguracj_triggered()
 
 void MainWindow::getDaneSym(WarstwaUslug::Wykres dane)
 {
-    aktSym();
 
     m_czasSym += (static_cast<double>(m_interwal) / 1000.0);
 
@@ -160,7 +174,7 @@ void MainWindow::getDaneSym(WarstwaUslug::Wykres dane)
         m_X_wykres_4->setRange(m_czasSym - czasPrzesunieciaOsi, m_czasSym);
     }
 
-    int liczbaProbek = static_cast<int>(czasPrzesunieciaOsi*1000)/ui->param_interwal->value();
+    int liczbaProbek = static_cast<int>(czasPrzesunieciaOsi*1000)/m_interwal;
     if(m_wykres_Reg->count() > liczbaProbek) {
         m_wykres_Reg->remove(0);
         m_wykres_Zad->remove(0);
@@ -181,6 +195,7 @@ void MainWindow::getDaneSym(WarstwaUslug::Wykres dane)
 void MainWindow::aktSym()
 {
     int aktInterwal = ui->param_interwal->value();
+
 
     if (aktInterwal != m_interwal) {
         m_interwal = aktInterwal;
@@ -332,6 +347,7 @@ void MainWindow::skalowanieY(QValueAxis *oy, const QList<QLineSeries *> &dane)
 
 void MainWindow::on_start_button_clicked()
 {
+    aktSym();
     int interwal = ui->param_interwal->value();
     m_warstwaUslug->startSym(interwal);
     this->setWindowTitle("STATUS SYMULACJI - URUCHOMIONA");

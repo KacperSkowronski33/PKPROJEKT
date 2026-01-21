@@ -87,4 +87,6 @@ private:
     void utworzOknoARX();
 
 };
+
+
 #endif // MAINWINDOW_H
