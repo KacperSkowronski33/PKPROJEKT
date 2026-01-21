@@ -56,6 +56,7 @@ void MainWindow::ZapiszDoPliku(){
     gen["okres"] = ui->param_okres->value();
     gen["skladowa"] = ui->param_skladowa->value();
     gen["wypelnienie"] = ui->param_wypelnienie->value();
+    gen["okno_czasowe"] = ui->param_czasObserwacji->value();
     pid["typ"] = ui->typ_syg_sin_button->isChecked() ? "sinus":"prostokat";
 
     QJsonObject arx;
@@ -112,6 +113,7 @@ void MainWindow::WczytajZPliku(){
     ui->param_skladowa->setValue(gen["skladowa"].toDouble());
     ui->param_okres->setValue(gen["okres"].toDouble());
     ui->param_wypelnienie->setValue(gen["wypelnienie"].toDouble());
+    ui->param_czasObserwacji->setValue(gen["okno_czasowe"].toDouble());
     if(pid["typ"].toString()=="sinus"){
         ui->typ_syg_sin_button->setChecked(true);
     }else{
@@ -171,12 +173,17 @@ void MainWindow::getDaneSym(WarstwaUslug::Wykres dane)
     m_wykres_I->append(m_czasSym, dane.i);
     m_wykres_D->append(m_czasSym, dane.d);
 
-    double czasPrzesunieciaOsi = 10.0;
+    double czasPrzesunieciaOsi = ui->param_czasObserwacji->value();
     if(m_czasSym > czasPrzesunieciaOsi) {
         m_X_wykres_1->setRange(m_czasSym - czasPrzesunieciaOsi, m_czasSym);
         m_X_wykres_2->setRange(m_czasSym - czasPrzesunieciaOsi, m_czasSym);
         m_X_wykres_3->setRange(m_czasSym - czasPrzesunieciaOsi, m_czasSym);
         m_X_wykres_4->setRange(m_czasSym - czasPrzesunieciaOsi, m_czasSym);
+    } else {
+        m_X_wykres_1->setRange(0, czasPrzesunieciaOsi);
+        m_X_wykres_2->setRange(0, czasPrzesunieciaOsi);
+        m_X_wykres_3->setRange(0, czasPrzesunieciaOsi);
+        m_X_wykres_4->setRange(0, czasPrzesunieciaOsi);
     }
 
     int liczbaProbek = static_cast<int>(czasPrzesunieciaOsi*1000)/m_interwal;
@@ -200,7 +207,6 @@ void MainWindow::getDaneSym(WarstwaUslug::Wykres dane)
 void MainWindow::aktSym()
 {
     int aktInterwal = ui->param_interwal->value();
-
 
     if (aktInterwal != m_interwal) {
         m_interwal = aktInterwal;
@@ -348,7 +354,7 @@ void MainWindow::skalowanieY(QValueAxis *oy, const QList<QLineSeries *> &dane)
 {
     if(dane.isEmpty()) return;
 
-    double min = 1.0, max = -1.0;
+    double min = std::numeric_limits<double>::min(), max = std::numeric_limits<double>::max();
     for(QLineSeries *d : dane) {
         QList<QPointF> punkty = d->points();
         for(QPointF &p : punkty) {
@@ -356,12 +362,19 @@ void MainWindow::skalowanieY(QValueAxis *oy, const QList<QLineSeries *> &dane)
             if(p.y() > max) max = p.y();
         }
     }
-    if(max == min) {
-        max += 0.1;
-        min -= 0.1;
+    double minZakres = 2.0;
+    double aktZakres = max - min;
+    double srodekZakresu = (max + min) /2.0;
+
+    if(minZakres > aktZakres) {
+        max = srodekZakresu + minZakres;
+        min = srodekZakresu - minZakres;
+    } else {
+        double margines = aktZakres * 0.1;
+        max += margines;
+        min -= margines;
     }
-    double margines = (max - min) * 0.1;
-    oy->setRange(min - margines, max + margines);
+    oy->setRange(min, max);
 }
 
 void MainWindow::on_start_button_clicked()
@@ -417,6 +430,7 @@ void MainWindow::on_reset_button_clicked()
     ui->param_okres->setValue(1.0);
     ui->param_skladowa->setValue(0.0);
     ui->param_wypelnienie->setValue(0.0);
+    ui->param_czasObserwacji->setValue(10.0);
     ui->tryb_calk_przed_suma_button->setChecked(true);
     ui->typ_syg_prostokat_button->setChecked(true);
     if(m_arxWindow) m_arxWindow->resetui();
