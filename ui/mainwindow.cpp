@@ -355,7 +355,7 @@ void MainWindow::skalowanieY(QValueAxis *oy, const QList<QLineSeries *> &dane)
 {
     if(dane.isEmpty()) return;
 
-    double min = std::numeric_limits<double>::min(), max = std::numeric_limits<double>::max();
+    double min = 10000.0, max = -10000.0;
     for(QLineSeries *d : dane) {
         QList<QPointF> punkty = d->points();
         for(QPointF &p : punkty) {

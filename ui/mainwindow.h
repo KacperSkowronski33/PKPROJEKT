@@ -10,6 +10,7 @@
 #include <QFile>
 #include "WarstwaUslug.h"
 #include "arx_set_param.h"
+#include <limits>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
