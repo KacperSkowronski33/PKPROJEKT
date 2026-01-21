@@ -456,6 +456,9 @@
             <pointsize>13</pointsize>
            </font>
           </property>
+          <property name="value">
+           <double>1.000000000000000</double>
+          </property>
          </widget>
         </item>
        </layout>

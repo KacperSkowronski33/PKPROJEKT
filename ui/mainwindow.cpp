@@ -15,7 +15,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->param_D, &QDoubleSpinBox::editingFinished, this, &MainWindow::aktSym);
     connect(ui->param_interwal, &QDoubleSpinBox::editingFinished, this, &MainWindow::aktSym);
     connect(ui->param_amplituda, &QDoubleSpinBox::editingFinished, this, &MainWindow::aktSym);
-    connect(ui->param_okres, &QSpinBox::editingFinished, this, &MainWindow::aktSym);
+    connect(ui->param_okres, &QDoubleSpinBox::editingFinished, this, &MainWindow::aktSym);
     connect(ui->param_skladowa, &QDoubleSpinBox::editingFinished, this, &MainWindow::aktSym);
     connect(ui->param_wypelnienie, &QDoubleSpinBox::editingFinished, this, &MainWindow::aktSym);
     connect(m_warstwaUslug, &WarstwaUslug::aktDanychUslugi, this, &MainWindow::getDaneSym);
@@ -341,6 +341,8 @@ void MainWindow::generujWykres_PID()
 
 void MainWindow::skalowanieY(QValueAxis *oy, const QList<QLineSeries *> &dane)
 {
+    if(dane.isEmpty()) return;
+
     double min = 1.0, max = -1.0;
     for(QLineSeries *d : dane) {
         QList<QPointF> punkty = d->points();
@@ -348,6 +350,10 @@ void MainWindow::skalowanieY(QValueAxis *oy, const QList<QLineSeries *> &dane)
             if(p.y() < min) min = p.y();
             if(p.y() > max) max = p.y();
         }
+    }
+    if(max == min) {
+        max += 0.1;
+        min -= 0.1;
     }
     double margines = (max - min) * 0.1;
     oy->setRange(min - margines, max + margines);
@@ -408,7 +414,7 @@ void MainWindow::on_reset_button_clicked()
     ui->param_wypelnienie->setValue(0.0);
     ui->tryb_calk_przed_suma_button->setChecked(true);
     ui->typ_syg_prostokat_button->setChecked(true);
-    m_arxWindow->resetui();
+    if(m_arxWindow) m_arxWindow->resetui();
 };
 
 
