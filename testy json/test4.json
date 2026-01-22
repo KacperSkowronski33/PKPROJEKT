@@ -1,0 +1,32 @@
+{
+    "parametry_pid": {
+        "interwal": 200,
+        "P": 0.5,
+        "I": 2.0,
+        "D": 0.0,
+        "tryb": "w sumie",
+        "typ": "prostokat"
+    },
+    "parametry_generatora": {
+        "amplituda": 5.0,
+        "okres": 10.0,
+        "skladowa": 0.0,
+        "wypelnienie": 0.5,
+        "okno_czasowe": 20.0
+    },
+    "parametry_arx": {
+        "zaklocenia": 0.0,
+        "opoznienie": 1,
+        "a1": -0.5,
+        "a2": 0.0,
+        "a3": 0.0,
+        "b1": 0.5,
+        "b2": 0.0,
+        "b3": 0.0,
+        "Umin": -10.0,
+        "Umax": 10.0,
+        "Ymin": -10.0,
+        "Ymax": 10.0,
+        "czyLimit": true
+    }
+}

@@ -123,7 +123,7 @@ void WarstwaUslug::ustawRodzajSygnalu(RodzajSygnalu rodzaj)
 	m_rodzajSyg = rodzaj;
 }
 
-WarstwaUslug::WarstwaUslug(QObject *parent) : QObject(parent), m_uar(), m_rodzajSyg(RodzajSygnalu::Brak), m_krokSym(0)
+WarstwaUslug::WarstwaUslug(QObject *parent) : QObject(parent), m_interwalUslugi(200), m_uar(), m_rodzajSyg(RodzajSygnalu::Brak) ,m_krokSym(0)
 {
     m_timer = new QTimer(this);
     connect(m_timer, &QTimer::timeout, this, &WarstwaUslug::sygnalSymulacji);

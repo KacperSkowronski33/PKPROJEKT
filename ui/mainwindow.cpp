@@ -163,7 +163,6 @@ void MainWindow::on_actionWczytaj_konfiguracj_triggered()
 
 void MainWindow::getDaneSym(WarstwaUslug::Wykres dane)
 {
-
     m_czasSym += (static_cast<double>(m_interwal) / 1000.0);
 
     m_wykres_Zad->append(m_czasSym, dane.wartZad);

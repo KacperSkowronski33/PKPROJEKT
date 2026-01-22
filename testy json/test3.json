@@ -1,0 +1,32 @@
+{
+    "parametry_arx": {
+        "Umax": 10,
+        "Umin": -10,
+        "Ymax": 10,
+        "Ymin": -10,
+        "a1": -0.5,
+        "a2": 0,
+        "a3": 0,
+        "b1": 0.5,
+        "b2": 0,
+        "b3": 0,
+        "czyLimit": true,
+        "opoznienie": 1,
+        "zaklocenia": 0
+    },
+    "parametry_generatora": {
+        "amplituda": 5,
+        "okno_czasowe": 10,
+        "okres": 10,
+        "skladowa": 0,
+        "wypelnienie": 0.1
+    },
+    "parametry_pid": {
+        "D": 0,
+        "I": 2,
+        "P": 0.5,
+        "interwal": 200,
+        "tryb": "przed suma",
+        "typ": "prostokat"
+    }
+}
