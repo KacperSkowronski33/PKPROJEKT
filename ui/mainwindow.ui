@@ -685,7 +685,7 @@
            </font>
           </property>
           <property name="text">
-           <string>CZAS OBSERWACJI</string>
+           <string>CZAS OBSERWACJI [s]</string>
           </property>
          </widget>
         </item>
