@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "arx_set_param.h"
+#include <initializer_list>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -174,17 +175,33 @@ void MainWindow::getDaneSym(WarstwaUslug::Wykres dane)
     m_wykres_D->append(m_czasSym, dane.d);
 
     double czasPrzesunieciaOsi = ui->param_czasObserwacji->value();
-    if(m_czasSym > czasPrzesunieciaOsi) {
-        m_X_wykres_1->setRange(m_czasSym - czasPrzesunieciaOsi, m_czasSym);
-        m_X_wykres_2->setRange(m_czasSym - czasPrzesunieciaOsi, m_czasSym);
-        m_X_wykres_3->setRange(m_czasSym - czasPrzesunieciaOsi, m_czasSym);
-        m_X_wykres_4->setRange(m_czasSym - czasPrzesunieciaOsi, m_czasSym);
-    } else {
-        m_X_wykres_1->setRange(0, czasPrzesunieciaOsi);
-        m_X_wykres_2->setRange(0, czasPrzesunieciaOsi);
-        m_X_wykres_3->setRange(0, czasPrzesunieciaOsi);
-        m_X_wykres_4->setRange(0, czasPrzesunieciaOsi);
-    }
+    // if(m_czasSym > czasPrzesunieciaOsi) {
+    //     m_X_wykres_1->setRange(m_czasSym - czasPrzesunieciaOsi, m_czasSym);
+    //     m_X_wykres_2->setRange(m_czasSym - czasPrzesunieciaOsi, m_czasSym);
+    //     m_X_wykres_3->setRange(m_czasSym - czasPrzesunieciaOsi, m_czasSym);
+    //     m_X_wykres_4->setRange(m_czasSym - czasPrzesunieciaOsi, m_czasSym);
+    // } else {
+    //     m_X_wykres_1->setRange(0, czasPrzesunieciaOsi);
+    //     m_X_wykres_2->setRange(0, czasPrzesunieciaOsi);
+    //     m_X_wykres_3->setRange(0, czasPrzesunieciaOsi);
+    //     m_X_wykres_4->setRange(0, czasPrzesunieciaOsi);
+    // }
+
+    auto skalowanieOX = [](double aktCzas, double czasPrzesuniecia, std::initializer_list<QValueAxis*> os) {
+        double min = 0.0, max = 0.0;
+
+        if(aktCzas > czasPrzesuniecia) {
+            min = aktCzas - czasPrzesuniecia;
+            max = aktCzas;
+        } else {
+            max = czasPrzesuniecia;
+            min = 0.0;
+        }
+        for(auto o : os) {
+            if(o) o->setRange(min, max);
+        }
+    };
+    skalowanieOX(m_czasSym, czasPrzesunieciaOsi, {m_X_wykres_1, m_X_wykres_2, m_X_wykres_3, m_X_wykres_4 });
 
     int liczbaProbek = static_cast<int>(czasPrzesunieciaOsi*1000)/m_interwal;
     if(m_wykres_Reg->count() > liczbaProbek) {
