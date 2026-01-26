@@ -49,10 +49,10 @@ void GeneratorProstokat::setAmplituda(double amplituda)
 double GeneratorProstokat::wynikProstokat(int krok)
 {
 	if ((krok % getOkres()) < getWypelnienie() * getOkres()) {
-		return getAmplituda() + getStala();
+        return getStala() + getAmplituda();
 	}
 	else {
-		return getStala();
+        return getStala() - getAmplituda();
 	}
 }
 

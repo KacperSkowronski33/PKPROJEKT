@@ -20,7 +20,10 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->param_skladowa, &QDoubleSpinBox::editingFinished, this, &MainWindow::aktSym);
     connect(ui->param_wypelnienie, &QDoubleSpinBox::editingFinished, this, &MainWindow::aktSym);
     connect(m_warstwaUslug, &WarstwaUslug::aktDanychUslugi, this, &MainWindow::getDaneSym);
-
+    connect(ui->typ_syg_sin_button, &QRadioButton::toggled, this, &MainWindow::aktSym);
+    connect(ui->typ_syg_prostokat_button, &QRadioButton::toggled, this, &MainWindow::aktSym);
+    connect(ui->tryb_calk_przed_suma_button, &QRadioButton::toggled, this, &MainWindow::aktSym);
+    connect(ui->tryb_calk_w_sumie_button, &QRadioButton::toggled, this, &MainWindow::aktSym);
 
     m_interwal = 200.0;
     m_czasSym = 0.0;
