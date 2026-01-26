@@ -73,10 +73,10 @@ double RegulatorPID::symuluj(double uchyb)
 
 		if (m_trybcalkowania)
             //m_sumauchyb += uchyb / m_Ti;
-            m_sumauchyb += (uchyb *dt) / m_Ti;
+            m_sumauchyb += (uchyb) / m_Ti;
 		else
             //m_sumauchyb += uchyb;
-            m_sumauchyb += uchyb*dt;
+            m_sumauchyb += uchyb;
 
 		if (m_trybcalkowania)
 			m_skladowaI = m_sumauchyb;
@@ -91,7 +91,7 @@ double RegulatorPID::symuluj(double uchyb)
 
     double dt =m_okresprobkowania;
     if(dt > 0.0) {
-        m_skladowaD = m_Td * ((uchyb - m_poprzedniuchyb) / dt);
+        m_skladowaD = m_Td * ((uchyb - m_poprzedniuchyb));
     } else {
         m_skladowaD = 0.0;
     }
