@@ -69,7 +69,6 @@ double RegulatorPID::symuluj(double uchyb)
 	m_skladowaP = m_k * uchyb;
 	if (m_Ti != 0.0)
 	{
-        double dt = m_okresprobkowania;
 
 		if (m_trybcalkowania)
             //m_sumauchyb += uchyb / m_Ti;

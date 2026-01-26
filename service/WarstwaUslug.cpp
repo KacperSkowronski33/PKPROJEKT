@@ -141,6 +141,7 @@ void WarstwaUslug::stopSym()
 
 void WarstwaUslug::setInterwal(int interwal)
 {
+    //m_interwalUslugi = interwal
     m_timer->setInterval(interwal);
 }
 

@@ -454,6 +454,7 @@ void MainWindow::on_reset_button_clicked()
     ui->tryb_calk_przed_suma_button->setChecked(true);
     ui->typ_syg_prostokat_button->setChecked(true);
     if(m_arxWindow) m_arxWindow->resetui();
+    this->setWindowTitle("STATUS SYMULACJI - ZATRZYMANA");
 };
 
 
